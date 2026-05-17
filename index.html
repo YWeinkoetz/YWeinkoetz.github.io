@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Youness Weinkötz — Projektportfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #1a1917;
+  --ink-mid: #4a4a42;
+  --ink-light: #8a8a7e;
+  --sand: #f4f1eb;
+  --sand-dark: #e8e4dc;
+  --cream: #faf8f4;
+  --accent: #169647;
+  --accent-dark: #0f6e34;
+  --accent-light: #e8f5ee;
+  --serif: 'DM Serif Display', Georgia, serif;
+  --sans: 'Outfit', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Hero ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.hero-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+}
+
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(2.8rem, 6vw, 4.2rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+}
+
+.hero-intro {
+  font-size: 1.15rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--ink-mid);
+  max-width: 620px;
+  margin-bottom: 2.5rem;
+}
+
+.hero-intro strong {
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.hero-timeline {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+.timeline-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.timeline-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-top: 7px;
+  flex-shrink: 0;
+}
+
+.timeline-dot.hollow {
+  background: transparent;
+  border: 1.5px solid var(--accent);
+}
+
+.timeline-text {
+  font-size: 13px;
+  color: var(--ink-mid);
+  line-height: 1.4;
+}
+
+.timeline-text strong {
+  display: block;
+  font-weight: 500;
+  color: var(--ink);
+  font-size: 13px;
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  animation: float 2.5s ease-in-out infinite;
+}
+
+.scroll-hint svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--ink-light);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(6px); }
+}
+
+/* ── Section ── */
+.section {
+  padding: 5rem 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.section h2 {
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 3rem;
+}
+
+/* ── Project Cards ── */
+.projects {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.project-card {
+  background: var(--cream);
+  border: 1px solid var(--sand-dark);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.project-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 20px rgba(22, 150, 71, 0.08);
+}
+
+.card-header {
+  padding: 1.75rem 2rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.card-number {
+  font-family: var(--serif);
+  font-size: 2rem;
+  color: var(--sand-dark);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 50px;
+  transition: color 0.2s;
+}
+
+.project-card:hover .card-number {
+  color: var(--accent-light);
+}
+
+.card-content {
+  flex: 1;
+}
+
+.card-title {
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  font-weight: 400;
+  margin-bottom: 6px;
+  color: var(--ink);
+}
+
+.card-subtitle {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--ink-light);
+  line-height: 1.5;
+}
+
+.card-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.tag {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: var(--sand);
+  color: var(--ink-light);
+}
+
+.tag.impact { background: var(--accent-light); color: var(--accent-dark); }
+
+.card-expand-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--sand-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 4px;
+  transition: all 0.2s;
+}
+
+.project-card:hover .card-expand-icon {
+  border-color: var(--accent);
+  background: var(--accent-light);
+}
+
+.card-expand-icon svg {
+  width: 12px;
+  height: 12px;
+  stroke: var(--ink-light);
+  transition: stroke 0.2s, transform 0.3s;
+}
+
+.project-card:hover .card-expand-icon svg {
+  stroke: var(--accent);
+}
+
+.project-card.open .card-expand-icon svg {
+  transform: rotate(180deg);
+}
+
+/* ── Expandable detail ── */
+.card-detail {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+.card-detail-inner {
+  padding: 0 2rem 2rem;
+  padding-left: calc(50px + 2rem + 1rem);
+}
+
+.detail-section {
+  margin-bottom: 1.25rem;
+}
+
+.detail-section:last-child { margin-bottom: 0; }
+
+.detail-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.detail-text {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--ink-mid);
+}
+
+.detail-text strong {
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.impact-list {
+  list-style: none;
+  padding: 0;
+}
+
+.impact-list li {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--ink-mid);
+  padding-left: 18px;
+  position: relative;
+  margin-bottom: 4px;
+}
+
+.impact-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+/* ── Contact ── */
+.contact-section {
+  padding: 5rem 2rem 6rem;
+  max-width: 900px;
+  margin: 0 auto;
+  border-top: 1px solid var(--sand-dark);
+}
+
+.contact-section h2 {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.contact-text {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--ink-mid);
+  max-width: 500px;
+  margin-bottom: 1.5rem;
+}
+
+.contact-links {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.contact-link {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.15s;
+}
+
+.contact-link:hover { color: var(--accent-dark); }
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .hero { padding: 3rem 1.25rem; }
+  .section { padding: 3rem 1.25rem; }
+  .card-header { padding: 1.25rem 1.25rem; }
+  .card-detail-inner { padding: 0 1.25rem 1.5rem; padding-left: 1.25rem; }
+  .card-number { display: none; }
+  .hero-timeline { flex-direction: column; gap: 1rem; }
+  .contact-section { padding: 3rem 1.25rem 4rem; }
+}
+
+/* ── Animations ── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-label">Projektportfolio</div>
+  <h1>Youness Weinkötz</h1>
+  <p class="hero-intro">
+    Vom Produktionsmitarbeiter zum Projektverantwortlichen in einem Jahr. Ich identifiziere operative Engpässe, 
+    entwerfe digitale Lösungen und setze sie selbständig um — von der Analyse über die Entwicklung 
+    bis zur unternehmensweiten Einführung. Neben meiner Projektarbeit koordiniere ich als 
+    <strong>Office Manager</strong> die Kommunikation zwischen Geschäftsführung und Fachabteilungen.
+  </p>
+
+  <div class="hero-timeline">
+    <div class="timeline-step">
+      <div class="timeline-dot hollow"></div>
+      <div class="timeline-text"><strong>Produktionsmitarbeiter</strong>Fertigung & Prozessverständnis</div>
+    </div>
+    <div class="timeline-step">
+      <div class="timeline-dot hollow"></div>
+      <div class="timeline-text"><strong>Kanban-Verantwortlicher</strong>Materialfluss & Bestandslogik</div>
+    </div>
+    <div class="timeline-step">
+      <div class="timeline-dot hollow"></div>
+      <div class="timeline-text"><strong>Logistik-Unterstützung</strong>Abteilungsübergreifende Koordination</div>
+    </div>
+    <div class="timeline-step">
+      <div class="timeline-dot"></div>
+      <div class="timeline-text"><strong>Assistenz der Bereichsleitung</strong>Eigenständige Projektverantwortung</div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    Projekte
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </div>
+</div>
+
+<!-- Projects -->
+<div class="section" id="projekte">
+  <div class="section-label">Projekte</div>
+  <h2>Vom Problem zur Lösung</h2>
+
+  <div class="projects">
+
+    <!-- Project 1 -->
+    <div class="project-card fade-in" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-number">01</div>
+        <div class="card-content">
+          <div class="card-title">Sonderanfertigungsformular</div>
+          <div class="card-subtitle">Ein webbasierter Schuhkonfigurator mit Live-Datenbankanbindung, der den manuellen Bestellprozess für Sonderanfertigungen in über 40 Filialen ablöst.</div>
+          <div class="card-tags">
+            <span class="tag">Prozessoptimierung</span>
+            <span class="tag">Datenbankintegration</span>
+            <span class="tag">UI/UX Design</span>
+            <span class="tag impact">40+ Filialen</span>
+          </div>
+        </div>
+        <div class="card-expand-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></div>
+      </div>
+      <div class="card-detail">
+        <div class="card-detail-inner">
+          <div class="detail-section">
+            <div class="detail-label">Ausgangslage</div>
+            <div class="detail-text">Sonderanfertigungen wurden ursprünglich über ein <strong>handschriftlich ausgefülltes PDF-Formular</strong> abgewickelt — ausschließlich durch den Bereichsleiter oder die Zentrale. Ein Google Sheet wurde als Zwischenlösung eingeführt, das bereits Kompatibilitätsregeln und Preisberechnung automatisierte, aber aufgrund von Lizenz- und Zugangsbeschränkungen nicht an die über 40 Filialen ausgerollt werden konnte.</div>
+          </div>
+          <div class="detail-section">
+            <div class="detail-label">Vorgehen</div>
+            <div class="detail-text">Analyse des bestehenden Formulars und dessen Logik (Kompatibilitätsregeln, Preisberechnung, abhängige Auswahllisten). Entwurf eines relationalen Datenmodells. Aufbau eines funktionalen Prototyps mit iterativem Feedback. Anbindung an die Warenwirtschafts-Datenbank für Live-Daten zu Modellen, Materialien und Lagerbeständen. Integration in die bestehende interne Plattform (Profundi).</div>
+          </div>
+          <div class="detail-section">
+            <div class="detail-label">Ergebnis</div>
+            <ul class="impact-list">
+              <li>Filialmitarbeiter können eigenständig Sonderanfertigungen erfassen</li>
+              <li>Komplexe Kompatibilitätsregeln verhindern ungültige Konfigurationen</li>
+              <li>Live-Materialverfügbarkeit aus dem Warenwirtschaftssystem</li>
+              <li>Automatische Preisberechnung und Auftragsübersicht</li>
+              <li>Phasenweise Einführung mit Schulungsdokumentation</li>
+            </ul>
+          </div>
+          <div class="detail-section">
+            <div class="detail-label">Meine Rolle</div>
+            <div class="detail-text">Komplette Eigenverantwortung: Anforderungsanalyse, Datenmodellierung, UI-Design, Datenbankintegration, Deployment-Planung, Erstellung der Anleitungen und Koordination der Einführung.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="project-card fade-in" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-number">02</div>
+        <div class="card-content">
+          <div class="card-title">Produktionsplaner</div>
+          <div class="card-subtitle">Ein datenbankgestütztes Planungstool, das aktuelle Lagerbestände mit SKU-Daten verknüpft, um die Machbarkeit geplanter Produktionsläufe zu bewerten und Engpassmaterialien zu identifizieren.</div>
+          <div class="card-tags">
+            <span class="tag">Produktionsplanung</span>
+            <span class="tag">Datenbankintegration</span>
+            <span class="tag">Engpassanalyse</span>
+            <span class="tag impact">Entscheidungsunterstützung</span>
+          </div>
+        </div>
+        <div class="card-expand-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></div>
+      </div>
+      <div class="card-detail">
+        <div class="card-detail-inner">
+          <div class="detail-section">
+            <div class="detail-label">Ausgangslage</div>
+            <div class="detail-text">Die Produktionsplanung erforderte manuelle Prüfung von Materialverfügbarkeiten über verschiedene Systeme hinweg. Engpässe wurden oft erst während der Produktion sichtbar.</div>
+          </div>
+          <div class="detail-section">
+            <div class="detail-label">Lösung</div>
+            <div class="detail-text">Ein Tool, das direkt mit der Warenwirtschafts-Datenbank verbunden ist. Nutzer geben geplante Schuhmodelle ein, das System gleicht die Stücklisten (BOM) mit aktuellen Lagerbeständen ab und zeigt sofort, welche Materialien den Engpass bilden.</div>
+          </div>
+          <div class="detail-section">
+            <div class="detail-label">Meine Rolle</div>
+            <div class="detail-text">Konzept, Datenbankanbindung, Entwicklung und Einführung — vollständig eigenverantwortlich umgesetzt.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="project-card fade-in" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-number">03</div>
+        <div class="card-content">
+          <div class="card-title">Stücklisten-Analyse — Konfigurierbare Möbel</div>
+          <div class="card-subtitle">Systematische Analyse der Stücklisten für konfigurierbare Möbel mittels Datenbankauswertung, die ein wiederkehrendes Datenqualitätsproblem aufgedeckt hat.</div>
+          <div class="card-tags">
+            <span class="tag">Datenanalyse</span>
+            <span class="tag">Qualitätssicherung</span>
+            <span class="tag">Abteilungsübergreifend</span>
+            <span class="tag impact">Systemproblem identifiziert</span>
+          </div>
+        </div>
+        <div class="card-expand-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></div>
+      </div>
+      <div class="card-detail">
+        <div class="card-detail-inner">
+          <div class="detail-section">
+            <div class="detail-label">Ausgangslage</div>
+            <div class="detail-text">Konfigurierbare Möbel haben komplexe Stücklisten im Warenwirtschaftssystem. Fehler in diesen Daten führen zu Problemen in Produktion und Bestellung, werden aber selten systematisch geprüft.</div>
+          </div>
+          <div class="detail-section">
+            <div class="detail-label">Vorgehen</div>
+            <div class="detail-text">Über einen Lesezugang zur Datenbank habe ich die Stücklisten der konfigurierbaren Möbel systematisch ausgewertet und dabei ein <strong>wiederkehrendes Muster fehlerhafter Einträge</strong> identifiziert, das in der normalen Arbeit nicht sichtbar war.</div>
+          </div>
+          <div class="detail-section">
+            <div class="detail-label">Ergebnis</div>
+            <div class="detail-text">Die Analyse samt Dokumentation wurde an die zuständige Fachabteilung übergeben, die das Problem nun gezielt beheben kann. Der Ansatz zeigt, wie Datenbankzugang proaktiv zur Qualitätssicherung eingesetzt werden kann.</div>
+          </div>
+          <div class="detail-section">
+            <div class="detail-label">Meine Rolle</div>
+            <div class="detail-text">Eigeninitiative: Analyse konzipiert, Datenbank abgefragt, Muster erkannt, Ergebnisse aufbereitet und an die richtige Stelle weitergeleitet.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 4 -->
+    <div class="project-card fade-in" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-number">04</div>
+        <div class="card-content">
+          <div class="card-title">Reparaturservice — Webseiten</div>
+          <div class="card-subtitle">Zwei kundenorientierte Webseiten: eine interaktive Übersicht verfügbarer Reparaturen nach Schuhmodell und eine Galerie mit Beispielen reparierter Schuhe samt Einsendeprozess.</div>
+          <div class="card-tags">
+            <span class="tag">Kundenservice</span>
+            <span class="tag">Webdesign</span>
+            <span class="tag">Content</span>
+            <span class="tag impact">Kundenorientiert</span>
+          </div>
+        </div>
+        <div class="card-expand-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></div>
+      </div>
+      <div class="card-detail">
+        <div class="card-detail-inner">
+          <div class="detail-section">
+            <div class="detail-label">Ausgangslage</div>
+            <div class="detail-text">Kunden hatten keine einfache Möglichkeit herauszufinden, welche Reparaturen für ihr Schuhmodell verfügbar sind. Die Vielfalt an Modellen machte eine übersichtliche Darstellung notwendig.</div>
+          </div>
+          <div class="detail-section">
+            <div class="detail-label">Lösung</div>
+            <div class="detail-text">Eine interaktive Informationsseite, die Kunden durch die Modellvielfalt navigiert und verfügbare Reparaturoptionen anzeigt. Ergänzt durch eine Galerie mit Vorher/Nachher-Beispielen und einer klaren Erklärung des Einsendeprozesses.</div>
+          </div>
+          <div class="detail-section">
+            <div class="detail-label">Meine Rolle</div>
+            <div class="detail-text">Konzeption, Informationsarchitektur, Design und Umsetzung beider Seiten.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 5 -->
+    <div class="project-card fade-in" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-number">05</div>
+        <div class="card-content">
+          <div class="card-title">Sonderanfertigung — Kundeninformationsseite</div>
+          <div class="card-subtitle">Eine öffentliche Webseite, die den Sonderanfertigungs-Service mit visuellen Beispielen präsentiert und Kunden die verfügbaren Optionen vermittelt.</div>
+          <div class="card-tags">
+            <span class="tag">Marketing</span>
+            <span class="tag">Webdesign</span>
+            <span class="tag impact">Kundenkommunikation</span>
+          </div>
+        </div>
+        <div class="card-expand-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></div>
+      </div>
+      <div class="card-detail">
+        <div class="card-detail-inner">
+          <div class="detail-section">
+            <div class="detail-label">Ausgangslage</div>
+            <div class="detail-text">Der Sonderanfertigungs-Service war für Kunden nicht transparent dargestellt. Die Möglichkeiten (Lederfarben, Sohlen, individuelle Anpassungen) waren nur intern bekannt.</div>
+          </div>
+          <div class="detail-section">
+            <div class="detail-label">Lösung</div>
+            <div class="detail-text">Eine visuell ansprechende Webseite mit konkreten Beispielen kundenspezifischer Schuhe, die die Bandbreite der Individualisierungsmöglichkeiten zeigt und den Service greifbar macht.</div>
+          </div>
+          <div class="detail-section">
+            <div class="detail-label">Meine Rolle</div>
+            <div class="detail-text">Konzept, Content-Auswahl, Design und Umsetzung.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 6 -->
+    <div class="project-card fade-in" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-number">06</div>
+        <div class="card-content">
+          <div class="card-title">Kanban-System — Aufbau &amp; Optimierung</div>
+          <div class="card-subtitle">Von der Neuordnung eines ganzen Reparaturlagers über die Einführung von Kanban-Karten bis hin zu einem automatisierten Mastersheet, das die Kartenerstellung um 90% beschleunigt.</div>
+          <div class="card-tags">
+            <span class="tag">Lean / Kanban</span>
+            <span class="tag">Lagermanagement</span>
+            <span class="tag">Prozessoptimierung</span>
+            <span class="tag impact">90% Zeitersparnis</span>
+          </div>
+        </div>
+        <div class="card-expand-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></div>
+      </div>
+      <div class="card-detail">
+        <div class="card-detail-inner">
+          <div class="detail-section">
+            <div class="detail-label">Phase 1 — Reparaturlager</div>
+            <div class="detail-text">Als Produktionsmitarbeiter in der Reparaturabteilung habe ich das <strong>gesamte Reparaturlager neu strukturiert</strong> und war maßgeblich daran beteiligt, sämtliche Materialien in das Kanban-System aufzunehmen. Die Neuordnung umfasste Lagerplatzvergabe, Bestandsaufnahme und die Erstellung aller zugehörigen Kanban-Karten.</div>
+          </div>
+          <div class="detail-section">
+            <div class="detail-label">Phase 2 — Erweiterung &amp; Lageplanung</div>
+            <div class="detail-text">In der Logistikabteilung habe ich nicht nur weitere Kanban-Karten erstellt, sondern auch <strong>Lagerlösungen konzipiert</strong>, um möglichst viele Materialien in das bestehende Kanban-System zu integrieren — einschließlich Platzoptimierung und Regalzuweisungen.</div>
+          </div>
+          <div class="detail-section">
+            <div class="detail-label">Phase 3 — Kanban Mastersheet</div>
+            <div class="detail-text">Die manuelle Kartenerstellung dauerte rund <strong>10 Minuten pro Materialgruppe</strong>. Das von mir entwickelte Mastersheet automatisiert den gesamten Prozess und reduziert ihn auf <strong>unter eine Minute pro Batch</strong> — eine Zeitersparnis von über 90%.</div>
+          </div>
+          <div class="detail-section">
+            <div class="detail-label">Ergebnis</div>
+            <ul class="impact-list">
+              <li>Reparaturlager komplett neu organisiert und in Kanban integriert</li>
+              <li>Lagerlösungen für maximale Materialabdeckung im Kanban-System</li>
+              <li><strong>90% Zeitersparnis</strong> bei der Kanban-Kartenerstellung</li>
+              <li>Weniger Fehler durch automatisierte Datenübernahme</li>
+            </ul>
+          </div>
+          <div class="detail-section">
+            <div class="detail-label">Meine Rolle</div>
+            <div class="detail-text">Von der operativen Umsetzung im Lager bis zur Entwicklung des automatisierten Mastersheets — über alle drei Phasen hinweg hauptverantwortlich.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- In Planung -->
+  <div style="margin-top: 3rem;">
+    <div class="section-label">In Planung</div>
+    <div style="margin-top: 0.75rem; padding: 1.25rem 1.5rem; border: 1px dashed var(--sand-dark); border-radius: 6px;">
+      <div style="font-family: var(--serif); font-size: 1.1rem; margin-bottom: 4px;">Verkaufsdaten-Analyse &amp; Trenderkennung</div>
+      <div style="font-size: 13px; color: var(--ink-light); line-height: 1.5;">Ein Tool zur automatisierten Auswertung von 18 Monaten Verkaufsdaten — mit Statistiktabellen und Trenderkennung zur Unterstützung strategischer Entscheidungen.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Contact -->
+<div class="contact-section">
+  <h2>Kontakt</h2>
+  <p class="contact-text">
+    Offen für Gespräche über Koordinations-, Projektmanagement- und Prozessoptimierungsrollen.
+  </p>
+  <div class="contact-links">
+    <a class="contact-link" href="mailto:youness@example.com">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
+      E-Mail
+    </a>
+    <a class="contact-link" href="https://linkedin.com/in/" target="_blank">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z"/></svg>
+      LinkedIn
+    </a>
+  </div>
+</div>
+
+<script>
+function toggleCard(card) {
+  const detail = card.querySelector('.card-detail');
+  const isOpen = card.classList.contains('open');
+
+  // Close all other cards
+  document.querySelectorAll('.project-card.open').forEach(c => {
+    if (c !== card) {
+      c.classList.remove('open');
+      c.querySelector('.card-detail').style.maxHeight = '0';
+    }
+  });
+
+  if (isOpen) {
+    card.classList.remove('open');
+    detail.style.maxHeight = '0';
+  } else {
+    card.classList.add('open');
+    detail.style.maxHeight = detail.scrollHeight + 'px';
+  }
+}
+
+// Fade-in on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
