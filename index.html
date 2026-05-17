@@ -2,6 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Youness Weinkötz — Projektportfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -720,6 +721,29 @@ body::before {
 }
 
 /* ════════════════════════════════════════════ */
+/*  Language toggle                            */
+/* ════════════════════════════════════════════ */
+.lang-toggle {
+  background: none;
+  border: 1px solid var(--sand-darker);
+  border-radius: 100px;
+  padding: 4px 12px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  color: var(--ink-mid);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: border-color 0.2s;
+}
+.lang-toggle:hover { border-color: var(--accent); }
+.lang-sep { color: var(--ink-faint); }
+.lang-opt { transition: color 0.2s, font-weight 0.2s; }
+.lang-opt.active { color: var(--accent); font-weight: 600; }
+
+/* ════════════════════════════════════════════ */
 /*  Reveal animation                            */
 /* ════════════════════════════════════════════ */
 .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.7s ease, transform 0.7s ease; }
@@ -768,14 +792,17 @@ body::before {
     <div class="masthead-inner">
       <div class="left">
         <span class="mono-name">YW &nbsp;/&nbsp; Portfolio</span>
-        <span class="role-pill desktop-only">
+        <span class="role-pill desktop-only" data-de='<span class="status-dot"></span> Verfügbar' data-en='<span class="status-dot"></span> Available'>
           <span class="status-dot"></span> Verfügbar
         </span>
       </div>
-      <div class="center">Vol. 01 · Ausgabe 2025</div>
+      <div class="center"></div>
       <div class="right">
-        <span class="desktop-only">Düsseldorf, DE</span>
-        <span>2025 — Edition 01</span>
+        <button class="lang-toggle" onclick="toggleLang()" aria-label="Switch language">
+          <span class="lang-opt" data-lang="de">DE</span>
+          <span class="lang-sep">/</span>
+          <span class="lang-opt" data-lang="en">EN</span>
+        </button>
       </div>
     </div>
   </header>
@@ -784,13 +811,13 @@ body::before {
   <section class="hero" data-screen-label="01 Hero">
     <div class="hero-grid">
       <div>
-        <div class="hero-kicker">Projektportfolio · 2024 — 2025</div>
+        <div class="hero-kicker" data-de="Projektportfolio · 2023 — 2026" data-en="Project Portfolio · 2023 — 2026">Projektportfolio · 2023 — 2026</div>
         <h1 class="hero-name">Youness<br><span class="surname">Weinkötz</span></h1>
-        <p class="hero-tag">
+        <p class="hero-tag" data-de='Vom <em>Produktionsmitarbeiter</em> zum<br><em>Projektverantwortlichen</em> — in einem Jahr.' data-en='From <em>production worker</em> to<br><em>project owner</em> — in one year.'>
           Vom <em>Produktionsmitarbeiter</em> zum<br>
           <em>Projektverantwortlichen</em> — in einem Jahr.
         </p>
-        <p class="hero-intro">
+        <p class="hero-intro" data-de='Ich identifiziere operative Engpässe, entwerfe digitale Lösungen und setze sie selbständig um — von der Analyse über die Entwicklung bis zur unternehmensweiten Einführung. Neben meiner Projektarbeit koordiniere ich als <strong>Office Manager</strong> die Kommunikation zwischen Geschäftsführung und Fachabteilungen.' data-en='I identify operational bottlenecks, design digital solutions, and implement them independently — from analysis through development to company-wide rollout. Alongside my project work, I coordinate communication between senior management and departments as <strong>Office Manager</strong>.'>
           Ich identifiziere operative Engpässe, entwerfe digitale Lösungen und setze sie selbständig
           um — von der Analyse über die Entwicklung bis zur unternehmensweiten Einführung. Neben
           meiner Projektarbeit koordiniere ich als <strong>Office Manager</strong> die Kommunikation
@@ -802,7 +829,7 @@ body::before {
         <dl>
           <div>
             <dt>Aktuell</dt>
-            <dd>Assistenz der Bereichsleitung &amp; <em>Office Manager</em></dd>
+            <dd>Assistenz der Bereichsleitung Schuhe &amp; Möbel · <em>Office Manager</em></dd>
           </div>
           <div>
             <dt>Schwerpunkt</dt>
@@ -810,7 +837,7 @@ body::before {
           </div>
           <div>
             <dt>Sprachen</dt>
-            <dd>Deutsch · English · Arabisch</dd>
+            <dd>Deutsch · English · Français · Arabisch</dd>
           </div>
           <div>
             <dt>Anfragen</dt>
@@ -823,28 +850,28 @@ body::before {
 
   <!-- ═══ Career Arc ═══ -->
   <section class="arc" data-screen-label="02 Werdegang" aria-label="Werdegang">
-    <div class="hero-kicker">Werdegang · 12 Monate</div>
+    <div class="hero-kicker">Werdegang · seit 2023</div>
     <div class="arc-rail"></div>
     <div class="arc-steps">
       <div class="arc-step">
-        <div class="arc-year">Q1 / 2024</div>
-        <div class="arc-role">Produktionsmitarbeiter</div>
-        <div class="arc-detail">Fertigung &amp; Prozessverständnis</div>
+        <div class="arc-year">2023 — 2024</div>
+        <div class="arc-role">Produktion &amp; Reparaturabteilung</div>
+        <div class="arc-detail">Fertigung, Prozessverständnis &amp; erste Eigeninitiative — Lager-Neustrukturierung</div>
       </div>
       <div class="arc-step">
-        <div class="arc-year">Q2 / 2024</div>
-        <div class="arc-role">Kanban-Verantwortlicher</div>
-        <div class="arc-detail">Materialfluss &amp; Bestandslogik</div>
+        <div class="arc-year">ab Mai 2025</div>
+        <div class="arc-role">Kanban &amp; Materialmanagement</div>
+        <div class="arc-detail">Aufbau &amp; Optimierung des unternehmensweiten Kanban-Systems</div>
       </div>
       <div class="arc-step">
-        <div class="arc-year">Q3 / 2024</div>
+        <div class="arc-year">ab Okt 2025</div>
         <div class="arc-role">Logistik-Unterstützung</div>
         <div class="arc-detail">Abteilungsübergreifende Koordination</div>
       </div>
       <div class="arc-step current">
-        <div class="arc-year">Q4 / 2024 —</div>
-        <div class="arc-role">Assistenz der Bereichsleitung</div>
-        <div class="arc-detail">Eigenständige Projektverantwortung</div>
+        <div class="arc-year">Q4 / 2025 —</div>
+        <div class="arc-role">Assistenz der Bereichsleitung Schuhe &amp; Möbel</div>
+        <div class="arc-detail">Eigenständige Projektverantwortung — ab Q1/2026 inkl. Möbelabteilung</div>
       </div>
     </div>
   </section>
@@ -875,7 +902,7 @@ body::before {
   <section class="section" id="projekte" data-screen-label="04 Projekte">
     <div class="section-head">
       <div>
-        <div class="section-eyebrow">Auswahl 2024 — 2025</div>
+        <div class="section-eyebrow">Auswahl 2023 — 2026</div>
         <h2 class="section-title">Vom Problem<br>zur <em>Lösung.</em></h2>
       </div>
       <div class="section-count">— 06 PROJEKTE / 01 IN PLANUNG —</div>
@@ -901,7 +928,7 @@ body::before {
           </div>
           <div class="project-meta">
             <div><b>Rolle</b>End-to-End</div>
-            <div><b>Stack</b>DB · Profundi</div>
+            <div><b>Stack</b>DB · Web</div>
           </div>
           <button class="project-toggle" aria-label="Details anzeigen">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
@@ -917,7 +944,7 @@ body::before {
               </div>
               <div class="detail-block">
                 <div class="lbl">Vorgehen</div>
-                <div class="txt">Analyse des bestehenden Formulars und dessen Logik (Kompatibilitätsregeln, Preisberechnung, abhängige Auswahllisten). Entwurf eines relationalen Datenmodells. Aufbau eines funktionalen Prototyps mit iterativem Feedback. Anbindung an die Warenwirtschafts-Datenbank für Live-Daten zu Modellen, Materialien und Lagerbeständen. Integration in die bestehende interne Plattform (Profundi).</div>
+                <div class="txt">Analyse des bestehenden Formulars und dessen Logik (Kompatibilitätsregeln, Preisberechnung, abhängige Auswahllisten). Entwurf eines relationalen Datenmodells. Aufbau eines funktionalen Prototyps mit iterativem Feedback. Anbindung an die Warenwirtschafts-Datenbank für Live-Daten zu Modellen, Materialien und Lagerbeständen. Integration in die bestehende interne Plattform.</div>
               </div>
               <div class="detail-block">
                 <div class="lbl">Ergebnis</div>
@@ -1256,8 +1283,8 @@ body::before {
 
   <!-- ═══ Footer ═══ -->
   <footer class="footer">
-    <span class="mono-name">© 2025 Youness Weinkötz</span>
-    <span>Portfolio · Vol. 01 · Düsseldorf, DE</span>
+    <span class="mono-name">© 2026 Youness Weinkötz</span>
+    <span>Portfolio</span>
     <span><a href="#projekte" style="color:inherit;text-decoration:none;">↑ Nach oben</a></span>
   </footer>
 
@@ -1394,6 +1421,232 @@ const root = ReactDOM.createRoot(document.getElementById('tweaks-root'));
 root.render(<App />);
 </script>
 
+<script>
+// ═══ Language Toggle ═══
+let currentLang = 'de';
+
+function initTranslations() {
+  function t(el, en) {
+    if (!el) return;
+    el.setAttribute('data-de', el.innerHTML);
+    el.setAttribute('data-en', en);
+  }
+
+  // Hero meta
+  const metaDivs = document.querySelectorAll('.hero-meta dl > div');
+  if (metaDivs[0]) { t(metaDivs[0].querySelector('dt'), 'Current'); t(metaDivs[0].querySelector('dd'), 'Assistant to Head of Shoes &amp; Furniture &middot; <em>Office Manager</em>'); }
+  if (metaDivs[1]) { t(metaDivs[1].querySelector('dt'), 'Focus'); t(metaDivs[1].querySelector('dd'), 'Process Optimisation &middot; Databases &middot; UI/UX'); }
+  if (metaDivs[2]) { t(metaDivs[2].querySelector('dt'), 'Languages'); }
+  if (metaDivs[3]) { t(metaDivs[3].querySelector('dt'), 'Seeking'); t(metaDivs[3].querySelector('dd'), 'Project Mgmt &middot; Coordination &middot; Operations'); }
+
+  // Career arc
+  t(document.querySelector('.arc > .hero-kicker'), 'Career Path &middot; since 2023');
+  const steps = document.querySelectorAll('.arc-step');
+  [steps[0], steps[1], steps[2], steps[3]].forEach((s, i) => {
+    if (!s) return;
+    const years = ['2023 — 2024', 'from May 2025', 'from Oct 2025', 'Q4 / 2025 —'];
+    const roles = ['Production &amp; Repair Department', 'Kanban &amp; Material Management', 'Logistics Support', 'Assistant to Head of Shoes &amp; Furniture'];
+    const details = [
+      'Manufacturing, process understanding &amp; first initiative — warehouse restructuring',
+      'Building &amp; optimising the company-wide Kanban system',
+      'Cross-department coordination',
+      'Independent project ownership — furniture dept. added Q1/2026'
+    ];
+    t(s.querySelector('.arc-year'), years[i]);
+    t(s.querySelector('.arc-role'), roles[i]);
+    t(s.querySelector('.arc-detail'), details[i]);
+  });
+
+  // KPIs
+  const kpis = document.querySelectorAll('.kpi .kpi-label');
+  const kpiEN = [
+    'Stores equipped with new <strong>configurator</strong>',
+    'Time saved on <strong>Kanban card creation</strong>',
+    'Completed <strong>projects</strong> in 12 months',
+    'System-wide <strong>data quality issue</strong> identified'
+  ];
+  kpis.forEach((k, i) => { if (kpiEN[i]) t(k, kpiEN[i]); });
+
+  // Section header
+  t(document.querySelector('.section-eyebrow'), 'Selected Work 2023 — 2026');
+  t(document.querySelector('.section-title'), 'From Problem<br>to <em>Solution.</em>');
+  t(document.querySelector('.section-count'), '— 06 PROJECTS / 01 PLANNED —');
+
+  // Projects
+  const P = {
+    'Projekt 01 Sonderanfertigung': {
+      title: 'Custom Shoe Order Form',
+      subtitle: 'A web-based shoe configurator with live database integration, replacing the manual custom order process across 40+ stores.',
+      tags: ['40+ Stores', 'Process Optimisation', 'Database Integration', 'UI/UX Design'],
+      meta: ['<b>Role</b>End-to-End', '<b>Stack</b>DB &middot; Web'],
+      labels: ['Background', 'Approach', 'Result'],
+      texts: [
+        'Custom shoe orders were originally processed via a <strong>handwritten PDF form</strong> — exclusively by the department head or head office. A Google Sheet was introduced as an interim solution with automated compatibility rules and pricing, but could not be rolled out to 40+ stores due to licensing and access constraints.',
+        'Analysis of the existing form logic (compatibility rules, pricing, dependent dropdowns). Design of a relational data model. Iterative prototype development with feedback. Integration with the warehouse database for live data on models, materials and stock levels. Deployment into the existing internal platform.',
+        null
+      ],
+      list: [
+        'Store staff can <strong>independently submit custom orders</strong>',
+        'Complex compatibility rules prevent invalid configurations',
+        'Live material availability from the warehouse system',
+        'Automatic pricing and order overview',
+        'Phased rollout with training documentation'
+      ],
+      asideLabels: ['My Role', 'Impact'],
+      asideTexts: [
+        'Full ownership: requirements analysis, data modelling, UI design, database integration, deployment planning, documentation and rollout coordination.',
+        '<strong>40+ stores</strong> gain autonomous access to the custom order workflow for the first time.'
+      ]
+    },
+    'Projekt 02 Produktionsplaner': {
+      title: 'Production Planner',
+      subtitle: 'A database-driven planning tool that cross-references current stock with BOM data to assess production feasibility and identify bottleneck materials.',
+      tags: ['Decision Support', 'Production Planning', 'Database Integration', 'Bottleneck Analysis'],
+      meta: ['<b>Role</b>End-to-End', '<b>Stack</b>DB &middot; BOM'],
+      labels: ['Background', 'Solution'],
+      texts: [
+        'Production planning required manual checks of material availability across multiple systems. Bottlenecks often only became visible during production.',
+        'A tool connected directly to the warehouse database. Users enter planned shoe models, the system cross-references <strong>bills of materials (BOM)</strong> with current stock levels and immediately shows which materials are the bottleneck.'
+      ],
+      asideLabels: ['My Role'],
+      asideTexts: ['Concept, database integration, development and rollout — fully self-directed.']
+    },
+    'Projekt 03 St\u00FCcklisten-Analyse': {
+      title: 'BOM Analysis — <em style="font-style:italic;color:var(--accent)">Configurable Furniture</em>',
+      subtitle: 'Systematic analysis of bills of materials for configurable furniture via database queries, uncovering a recurring data quality issue.',
+      tags: ['Issue Identified', 'Data Analysis', 'Quality Assurance', 'Cross-Department'],
+      meta: ['<b>Role</b>Self-Initiated', '<b>Stack</b>SQL &middot; Reporting'],
+      labels: ['Background', 'Approach', 'Result'],
+      texts: [
+        'Configurable furniture has complex BOMs in the warehouse system. Errors in this data cause production and ordering issues, but are rarely checked systematically.',
+        'Using read-only database access, I systematically analysed the BOMs and identified a <strong>recurring pattern of faulty entries</strong> that was not visible in day-to-day operations.',
+        'The analysis and documentation were handed to the responsible department for targeted resolution. The approach demonstrates how database access can be used <strong>proactively for quality assurance</strong>.'
+      ],
+      asideLabels: ['My Role'],
+      asideTexts: ['Self-initiated: designed the analysis, queried the database, identified the pattern, prepared findings and routed them to the right team.']
+    },
+    'Projekt 04 Reparaturservice': {
+      title: 'Repair Service — Web Pages',
+      subtitle: 'Two customer-facing web pages: an interactive overview of available repairs by shoe model, and a gallery of repaired shoes with the send-in process explained.',
+      tags: ['Customer-Facing', 'Customer Service', 'Web Design', 'Content'],
+      meta: ['<b>Role</b>End-to-End', '<b>Format</b>2 Web Pages'],
+      labels: ['Background', 'Solution'],
+      texts: [
+        'Customers had no easy way to find out which repairs were available for their shoe model. The large number of models required a clear, navigable presentation.',
+        'An interactive information page that guides customers through the model range and shows available repair options. Complemented by a gallery with <strong>before/after examples</strong> and a clear explanation of the send-in process.'
+      ],
+      asideLabels: ['My Role'],
+      asideTexts: ['Concept, information architecture, design and implementation of both pages.']
+    },
+    'Projekt 05 Kundeninformation': {
+      title: 'Custom Shoes — Customer Information',
+      subtitle: 'A public web page showcasing the custom shoe service with visual examples, helping customers understand the available options.',
+      tags: ['Customer Comms', 'Marketing', 'Web Design'],
+      meta: ['<b>Role</b>End-to-End', '<b>Format</b>Public Site'],
+      labels: ['Background', 'Solution'],
+      texts: [
+        'The custom shoe service was not transparently presented to customers. The possibilities (leather colours, soles, individual adjustments) were only known internally.',
+        'A visually appealing web page with concrete examples of custom shoes, showing the <strong>full range of customisation options</strong> and making the service tangible for customers.'
+      ],
+      asideLabels: ['My Role'],
+      asideTexts: ['Concept, content selection, design and implementation.']
+    },
+    'Projekt 06 Kanban-System': {
+      title: 'Kanban System — Build &amp; Optimisation',
+      subtitle: 'From restructuring an entire repair warehouse to building Kanban cards to an automated mastersheet that sped up card creation by 90%.',
+      tags: ['90% Time Saved', 'Lean / Kanban', 'Warehouse Mgmt', 'Process Optimisation'],
+      meta: ['<b>Role</b>Lead', '<b>Scope</b>3 Phases'],
+      labels: ['Phase 1 &middot; Repair Warehouse', 'Phase 2 &middot; Expansion &amp; Storage Planning', 'Phase 3 &middot; Kanban Mastersheet', 'Result'],
+      texts: [
+        'As a production worker in the repair department, I <strong>completely restructured the repair warehouse</strong> and was the leading contributor in adding all materials to the Kanban system. This included storage assignments, inventory checks and creating all associated Kanban cards.',
+        'In the logistics department, I not only created more Kanban cards but also <strong>designed storage solutions</strong> to integrate as many materials as possible into the existing system — including space optimisation and shelf assignments.',
+        'Manual card creation took about <strong>10 minutes per material group</strong>. The mastersheet I developed automates the entire process, reducing it to <strong>under one minute per batch</strong> — a time saving of over 90%.',
+        null
+      ],
+      list: [
+        'Repair warehouse completely reorganised and integrated into Kanban',
+        'Storage solutions for maximum material coverage in the Kanban system',
+        '<strong>90% time saved</strong> on Kanban card creation',
+        'Fewer errors through automated data transfer'
+      ],
+      asideLabels: ['My Role', 'Impact'],
+      asideTexts: [
+        'From hands-on warehouse work to developing the automated mastersheet — lead responsible across all three phases.',
+        '<strong>10 min → &lt;1 min</strong> per batch. A recurring workflow reimagined.'
+      ]
+    }
+  };
+
+  document.querySelectorAll('article.project').forEach(proj => {
+    const label = proj.getAttribute('data-screen-label');
+    const d = P[label];
+    if (!d) return;
+
+    t(proj.querySelector('.project-title'), d.title);
+    t(proj.querySelector('.project-subtitle'), d.subtitle);
+
+    // Tags
+    const tags = proj.querySelectorAll('.tag-row .tag:not(.divider)');
+    d.tags.forEach((tg, i) => { if (tags[i]) t(tags[i], tg); });
+
+    // Meta
+    const metas = proj.querySelectorAll('.project-meta > div');
+    d.meta.forEach((m, i) => { if (metas[i]) t(metas[i], m); });
+
+    // Detail blocks in main body
+    const blocks = proj.querySelectorAll('.detail-body > div > .detail-block');
+    d.labels.forEach((lb, i) => {
+      if (blocks[i]) {
+        t(blocks[i].querySelector('.lbl'), lb);
+        if (d.texts[i]) t(blocks[i].querySelector('.txt'), d.texts[i]);
+      }
+    });
+
+    // List items
+    if (d.list) {
+      const items = proj.querySelectorAll('.detail-body ul li');
+      d.list.forEach((li, i) => { if (items[i]) t(items[i], li); });
+    }
+
+    // Aside blocks
+    const asides = proj.querySelectorAll('.detail-aside .detail-block');
+    d.asideLabels.forEach((lb, i) => {
+      if (asides[i]) {
+        t(asides[i].querySelector('.lbl'), lb);
+        if (d.asideTexts[i]) t(asides[i].querySelector('.txt'), d.asideTexts[i]);
+      }
+    });
+  });
+
+  // Upcoming
+  t(document.querySelector('.upcoming-title'), 'Sales Data Analysis &amp; Trend Detection');
+  t(document.querySelector('.upcoming-desc'), 'A tool for automated analysis of 18 months of sales data — with statistics tables and trend detection to support strategic decisions.');
+  t(document.querySelector('.upcoming-badge'), 'Planned');
+
+  // Contact
+  t(document.querySelector('.contact-statement'), 'Open for<br><em>conversations.</em>');
+  t(document.querySelector('.contact-text'), 'Coordination, project management and process optimisation roles — ideally at the intersection of operations, data and digital tools.');
+  const cLinks = document.querySelectorAll('.contact-link');
+  if (cLinks[2]) {
+    t(cLinks[2].querySelector('.label'), 'Phone');
+    const sp = cLinks[2].querySelector('div span:not(.label)');
+    if (sp) t(sp, 'on request');
+  }
+}
+
+function toggleLang() {
+  currentLang = currentLang === 'de' ? 'en' : 'de';
+  document.querySelectorAll('.lang-opt').forEach(opt => {
+    opt.classList.toggle('active', opt.getAttribute('data-lang') === currentLang);
+  });
+  document.querySelectorAll('[data-de]').forEach(el => {
+    el.innerHTML = currentLang === 'de' ? el.getAttribute('data-de') : el.getAttribute('data-en');
+  });
+}
+
+document.querySelector('.lang-opt[data-lang="de"]').classList.add('active');
+initTranslations();
+</script>
 <script>
 function toggleCard(card) {
   const isOpen = card.classList.contains('open');
