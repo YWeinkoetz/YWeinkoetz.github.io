@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Stücklisten-Analyse — Youness Weinkötz</title>
-<meta name="description" content="Systematische Analyse der Stücklisten für konfigurierbare Möbel mittels Datenbankauswertung, die ein wiederkehrendes Datenqualitätsproblem aufgedeckt hat.">
+<meta name="description" content="Systematische Analyse der Stücklisten für konfigurierbare Möbel und Matratzen mittels Datenbankauswertung, die ein wiederkehrendes Datenqualitätsproblem aufgedeckt hat.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="de_DE">
 <meta property="og:title" content="Stücklisten-Analyse — Youness Weinkötz">
-<meta property="og:description" content="Systematische Analyse der Stücklisten für konfigurierbare Möbel mittels Datenbankauswertung, die ein wiederkehrendes Datenqualitätsproblem aufgedeckt hat.">
+<meta property="og:description" content="Systematische Analyse der Stücklisten für konfigurierbare Möbel und Matratzen mittels Datenbankauswertung, die ein wiederkehrendes Datenqualitätsproblem aufgedeckt hat.">
 <meta property="og:image" content="../images/03-stuecklisten-korrekturen.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -50,9 +50,9 @@
 
   <div class="proj-hero">
     <span class="proj-num" aria-hidden="true">03</span>
-    <h1 class="proj-title" data-de="Stücklisten-Analyse — Konfigurierbare Möbel" data-en="BOM Analysis — Configurable Furniture">Stücklisten-Analyse — <em style="font-style:italic;color:var(--accent)">Konfigurierbare Möbel</em></h1>
-    <p class="proj-subtitle" data-de="Systematische Analyse der Stücklisten für konfigurierbare Möbel mittels Datenbankauswertung, die ein wiederkehrendes Datenqualitätsproblem aufgedeckt hat." data-en="Systematic analysis of bills of materials for configurable furniture via database queries, uncovering a recurring data quality issue.">
-      Systematische Analyse der Stücklisten für konfigurierbare Möbel mittels Datenbankauswertung, die ein wiederkehrendes Datenqualitätsproblem aufgedeckt hat.
+    <h1 class="proj-title" data-de="Stücklisten-Analyse — Konfigurierbare Möbel &amp; Matratzen" data-en="BOM Analysis — Configurable Furniture &amp; Mattresses">Stücklisten-Analyse — <em style="font-style:italic;color:var(--accent)">Konfigurierbare Möbel &amp; Matratzen</em></h1>
+    <p class="proj-subtitle" data-de="Systematische Analyse der Stücklisten für konfigurierbare Möbel und Matratzen mittels Datenbankauswertung, die ein wiederkehrendes Datenqualitätsproblem aufgedeckt hat." data-en="Systematic analysis of bills of materials for configurable furniture and mattresses via database queries, uncovering a recurring data quality issue.">
+      Systematische Analyse der Stücklisten für konfigurierbare Möbel und Matratzen mittels Datenbankauswertung, die ein wiederkehrendes Datenqualitätsproblem aufgedeckt hat.
     </p>
     <div class="proj-hero-meta">
       <span><b data-de="Rolle" data-en="Role">Rolle</b><span data-de="Eigeninitiative" data-en="Self-Initiated">Eigeninitiative</span></span>
@@ -65,14 +65,20 @@
     <div>
       <div class="detail-block">
         <div class="lbl" data-de="Ausgangslage" data-en="Background">Ausgangslage</div>
-        <div class="txt" data-de="Konfigurierbare Möbel haben komplexe Stücklisten im Warenwirtschaftssystem. Fehler in diesen Daten führen zu Problemen in Produktion und Bestellung, werden aber selten systematisch geprüft." data-en="Configurable furniture has complex BOMs in the warehouse system. Errors in this data cause production and ordering issues, but are rarely checked systematically.">
-          Konfigurierbare Möbel haben komplexe Stücklisten im Warenwirtschaftssystem. Fehler in diesen Daten führen zu Problemen in Produktion und Bestellung, werden aber selten systematisch geprüft.
+        <div class="txt" data-de="Konfigurierbare Möbel und Matratzen haben komplexe Stücklisten im Warenwirtschaftssystem. Fehler in diesen Daten führen zu Problemen in Produktion und Bestellung, werden aber selten systematisch geprüft." data-en="Configurable furniture and mattresses have complex BOMs in the warehouse system. Errors in this data cause production and ordering issues, but are rarely checked systematically.">
+          Konfigurierbare Möbel und Matratzen haben komplexe Stücklisten im Warenwirtschaftssystem. Fehler in diesen Daten führen zu Problemen in Produktion und Bestellung, werden aber selten systematisch geprüft.
         </div>
       </div>
       <div class="detail-block">
         <div class="lbl" data-de="Vorgehen" data-en="Approach">Vorgehen</div>
         <div class="txt" data-de='Über einen Lesezugang zur Datenbank habe ich die Stücklisten der konfigurierbaren Möbel systematisch ausgewertet und dabei ein <strong>wiederkehrendes Muster fehlerhafter Einträge</strong> identifiziert, das in der normalen Arbeit nicht sichtbar war.' data-en='Using read-only database access, I systematically analysed the BOMs and identified a <strong>recurring pattern of faulty entries</strong> that was not visible in day-to-day operations.'>
           Über einen Lesezugang zur Datenbank habe ich die Stücklisten der konfigurierbaren Möbel systematisch ausgewertet und dabei ein <strong>wiederkehrendes Muster fehlerhafter Einträge</strong> identifiziert, das in der normalen Arbeit nicht sichtbar war.
+        </div>
+      </div>
+      <div class="detail-block">
+        <div class="lbl" data-de="Konfigurierbare Matratzen" data-en="Configurable Mattresses">Konfigurierbare Matratzen</div>
+        <div class="txt" data-de='Die Analyse wurde auf <strong>konfigurierbare Matratzen</strong> ausgeweitet. Hier werden die Mengen der einzelnen Bauteile als Sondermaß-Artikel per Formel aus den eingegebenen Maßen berechnet — angegeben in laufenden Metern je Größe von 50 bis 200 cm. Ich habe diese formelbasierten Stücklisten systematisch geprüft und korrigiert, damit die berechneten Mengen über alle Größen hinweg konsistent und korrekt sind.' data-en='The analysis was extended to <strong>configurable mattresses</strong>, where each component quantity is derived by formula from the entered dimensions as a custom-size (Sondermaß) article — given in linear metres per size from 50 to 200 cm. I systematically reviewed and corrected these formula-based BOMs so the computed quantities are consistent and correct across every size.'>
+          Die Analyse wurde auf <strong>konfigurierbare Matratzen</strong> ausgeweitet. Hier werden die Mengen der einzelnen Bauteile als Sondermaß-Artikel per Formel aus den eingegebenen Maßen berechnet — angegeben in laufenden Metern je Größe von 50 bis 200 cm. Ich habe diese formelbasierten Stücklisten systematisch geprüft und korrigiert, damit die berechneten Mengen über alle Größen hinweg konsistent und korrekt sind.
         </div>
       </div>
       <div class="detail-block">
@@ -118,6 +124,12 @@
           <img src="../images/03-stuecklisten-visual.png" alt="Visuelle Analyse der OR-Einschränkungen">
         </div>
         <div class="gallery-caption" data-de="Visuelle Analyse — wie OR-Einschränkungen im System stehen vs. wie sie ausgewertet werden" data-en="Visual analysis — how OR constraints are stored vs. how they are evaluated">Visuelle Analyse — wie OR-Einschränkungen im System stehen vs. wie sie ausgewertet werden</div>
+      </div>
+      <div>
+        <div class="gallery-item">
+          <img src="../images/03-stuecklisten-matratzen.png" alt="Stücklisten konfigurierbarer Matratzen — formelbasierte Mengen je Größe">
+        </div>
+        <div class="gallery-caption" data-de="Konfigurierbare Matratzen — formelbasierte Mengen je Größe (50–200 cm), geprüft und korrigiert" data-en="Configurable mattresses — formula-based quantities per size (50–200 cm), reviewed and corrected">Konfigurierbare Matratzen — formelbasierte Mengen je Größe (50–200 cm), geprüft und korrigiert</div>
       </div>
     </div>
   </div>
