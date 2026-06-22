@@ -31,7 +31,7 @@ const SHOTS = [
   { file: '../KanbanApp/src/index.html',                                       out: '06-kanban-app.png',                   wait: 1500 },
 
   // Portfolio overview
-  { file: 'Portfolio.html',                                                    out: '00-portfolio-overview.png',           wait: 2000 },
+  { file: 'index.html',                                                    out: '00-portfolio-overview.png',           wait: 2000 },
 ];
 
 (async () => {

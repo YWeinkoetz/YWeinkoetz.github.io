@@ -16,7 +16,7 @@ function fileUrl(p) { return 'file:///' + p.replace(/\\/g, '/'); }
     { file: 'projects/sonderanfertigung.html', out: 'images/preview-01.png' },
     { file: 'projects/stucklisten-analyse.html', out: 'images/preview-03.png' },
     { file: 'projects/reparaturservice.html', out: 'images/preview-04.png' },
-    { file: 'Portfolio.html', out: 'images/preview-overview.png' },
+    { file: 'index.html', out: 'images/preview-overview.png' },
   ];
 
   for (const p of pages) {

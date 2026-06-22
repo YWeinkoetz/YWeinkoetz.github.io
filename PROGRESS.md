@@ -11,7 +11,7 @@ Bilingual DE/EN. Shared design system via `styles.css`. React 18 + Babel CDN for
 
 ```
 Portfolio/
-├── Portfolio.html          — Overview page (masthead, hero, career arc, KPI band, 7 project rows, contact)
+├── index.html          — Overview page (masthead, hero, career arc, KPI band, 7 project rows, contact)
 ├── styles.css              — Shared CSS for all pages (design tokens, components, lightbox, nav)
 ├── gallery.js              — Lightbox implementation (click to zoom, ESC to close, backdrop blur)
 ├── PROGRESS.md             — This file
@@ -69,7 +69,7 @@ Screenshot scripts live in `C:\Users\youness\.local\bin\`:
 - **Reveal animations** — IntersectionObserver fade-in on `.project`, `.kpi`, `.arc-step` etc.
 - **KPI band** — 40+ Filialen, 90% Zeitersparnis, 07 Projekte, 01 Systemproblem
 - **Career arc** — timeline from 2023 production worker → current assistant to head of Shoes & Furniture
-- **Open Graph meta tags** — `og:title`, `og:description`, `og:image`, `og:type`, `og:locale` + `twitter:card` on all 8 pages (Portfolio.html + 7 project pages); `og:image` omitted for project 05 (no screenshot yet)
+- **Open Graph meta tags** — `og:title`, `og:description`, `og:image`, `og:type`, `og:locale` + `twitter:card` on all 8 pages (index.html + 7 project pages); `og:image` omitted for project 05 (no screenshot yet)
 - **Print stylesheet** — `@media print` in `styles.css`; strips masthead, tweaks panel, bigword, pagination, footer; preserves two-column layout and gallery images; page-break hints on detail blocks and sections
 - **Tweaks panel removed** — dead code (file never existed); React, ReactDOM, Babel CDN scripts and all inline tweaks blocks stripped from all 8 pages
 - **Stat callout blocks** — accent-tinted before/after stat panels on projects 01, 03, 06; bilingual labels; stack on mobile
