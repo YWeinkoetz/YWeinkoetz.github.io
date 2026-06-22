@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matomo-Setup &amp; Newsletter-Reporting — Youness Weinkötz</title>
+<meta name="description" content="Matomo-Kampagnen-Tracking aufgesetzt und ein Python-Toolset gebaut, das wöchentliche CSV-Exporte automatisch in mehrseitige PDF-Reports mit Diagrammen verwandelt — inkl. eigenständiger .exe für Kollegen ohne Python.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:title" content="Matomo-Setup &amp; Newsletter-Reporting — Youness Weinkötz">
+<meta property="og:description" content="Matomo-Kampagnen-Tracking aufgesetzt und ein Python-Toolset gebaut, das wöchentliche CSV-Exporte automatisch in mehrseitige PDF-Reports mit Diagrammen verwandelt — inkl. eigenständiger .exe für Kollegen ohne Python.">
+<meta property="og:image" content="../images/08-matomo-report-kpis.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<div class="shell">
+
+  <header class="masthead">
+    <div class="masthead-inner">
+      <div class="left">
+        <a class="back-link" href="../index.html">
+          <svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+          <span data-de="Übersicht" data-en="Overview">Übersicht</span>
+        </a>
+      </div>
+      <div class="center">
+        <div class="proj-nav">
+          <a class="proj-nav-arrow" href="verkaufsdaten-analyse.html" title="Vorheriges Projekt">
+            <svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+          </a>
+          <span class="proj-nav-count">08 / 08</span>
+        </div>
+      </div>
+      <div class="right">
+        <button class="lang-toggle" onclick="toggleLang()" aria-label="Switch language">
+          <span class="lang-opt" data-lang="de">DE</span>
+          <span class="lang-sep">/</span>
+          <span class="lang-opt" data-lang="en">EN</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="proj-hero">
+    <span class="proj-num" aria-hidden="true">08</span>
+    <h1 class="proj-title" data-de="Matomo-Setup &amp; Newsletter-Reporting" data-en="Matomo Setup &amp; Newsletter Reporting">Matomo-Setup &amp; <em style="font-style:italic;color:var(--accent)">Newsletter-Reporting</em></h1>
+    <p class="proj-subtitle" data-de="Matomo-Kampagnen-Tracking aufgesetzt und ein Python-Toolset gebaut, das wöchentliche CSV-Exporte automatisch in mehrseitige PDF-Reports mit Diagrammen verwandelt — inkl. eigenständiger .exe für Kollegen ohne Python." data-en="Set up Matomo campaign tracking and built a Python toolset that automatically turns weekly CSV exports into multi-page PDF reports with charts — including a standalone .exe for colleagues without Python.">
+      Matomo-Kampagnen-Tracking aufgesetzt und ein Python-Toolset gebaut, das wöchentliche CSV-Exporte automatisch in mehrseitige PDF-Reports mit Diagrammen verwandelt — inkl. eigenständiger .exe für Kollegen ohne Python.
+    </p>
+    <div class="proj-hero-meta">
+      <span><b data-de="Rolle" data-en="Role">Rolle</b><span data-de="Eigeninitiative" data-en="Self-Initiated">Eigeninitiative</span></span>
+      <span><b>Stack</b>Python · pandas · matplotlib</span>
+      <span><b data-de="Wirkung" data-en="Impact">Wirkung</b><em data-de="Reporting automatisiert" data-en="Reporting automated">Reporting automatisiert</em></span>
+    </div>
+  </div>
+
+  <div class="proj-content">
+    <div>
+      <div class="detail-block">
+        <div class="lbl" data-de="Ausgangslage" data-en="Background">Ausgangslage</div>
+        <div class="txt" data-de="Die GEA-Waldviertler-Newsletter werden in Matomo erfasst, doch die Rohdaten lagen nur als CSV-Export vor. Fürs wöchentliche Newsletter-Meeting mussten Kennzahlen und Diagramme jedes Mal manuell zusammengestellt werden — zeitaufwendig und fehleranfällig." data-en="The GEA Waldviertler newsletters are tracked in Matomo, but the raw data existed only as CSV exports. For the weekly newsletter meeting, metrics and charts had to be assembled by hand every time — time-consuming and error-prone.">
+          Die GEA-Waldviertler-Newsletter werden in Matomo erfasst, doch die Rohdaten lagen nur als CSV-Export vor. Fürs wöchentliche Newsletter-Meeting mussten Kennzahlen und Diagramme jedes Mal manuell zusammengestellt werden — zeitaufwendig und fehleranfällig.
+        </div>
+      </div>
+      <div class="detail-block">
+        <div class="lbl" data-de="Matomo-Setup" data-en="Matomo Setup">Matomo-Setup</div>
+        <div class="txt" data-de='Kampagnen-Tracking für die Newsletter eingerichtet (<code>pk_</code>-Parameter je Block und Kampagne) und den richtigen Export-Weg definiert: das <strong>segmentierte Besucherprotokoll</strong> (Visits-Log) statt des aggregierten Kampagnen-Berichts — nur so stehen Geräte-, Orts-, Seiten- und Tracking-Daten zur Verfügung.' data-en='Set up campaign tracking for the newsletters (<code>pk_</code> parameters per block and campaign) and defined the correct export path: the <strong>segmented visits log</strong> rather than the aggregated campaign report — only this provides device, location, page and tracking data.'>
+          Kampagnen-Tracking für die Newsletter eingerichtet (<code>pk_</code>-Parameter je Block und Kampagne) und den richtigen Export-Weg definiert: das <strong>segmentierte Besucherprotokoll</strong> (Visits-Log) statt des aggregierten Kampagnen-Berichts — nur so stehen Geräte-, Orts-, Seiten- und Tracking-Daten zur Verfügung.
+        </div>
+      </div>
+      <div class="detail-block">
+        <div class="lbl" data-de="Python-Automatisierung" data-en="Python Automation">Python-Automatisierung</div>
+        <ul>
+          <li data-de="<code>matomo_report.py</code> — mehrseitiger PDF-Report je Export: KPIs, Traffic &amp; Engagement, Geräte, Publikum, Newsletter-Blöcke, Produkt-Interesse und Top-Seiten." data-en="<code>matomo_report.py</code> — multi-page PDF report per export: KPIs, traffic &amp; engagement, devices, audience, newsletter blocks, product interest and top pages."><code>matomo_report.py</code> — mehrseitiger PDF-Report je Export: KPIs, Traffic &amp; Engagement, Geräte, Publikum, Newsletter-Blöcke, Produkt-Interesse und Top-Seiten.</li>
+          <li data-de="<code>link_health.py</code> — prüft jeden Newsletter-Link, ob die Tracking-Tags ankommen (OK / Tags verloren / defekte URL)." data-en="<code>link_health.py</code> — checks every newsletter link for whether its tracking tags survived (OK / tags lost / broken URL)."><code>link_health.py</code> — prüft jeden Newsletter-Link, ob die Tracking-Tags ankommen (OK / Tags verloren / defekte URL).</li>
+          <li data-de="<code>campaign_trend.py</code> — vergleicht alle Kampagnen über die Zeit mit KPI-Tabelle und Verlaufskurven." data-en="<code>campaign_trend.py</code> — compares all campaigns over time with a KPI table and trend curves."><code>campaign_trend.py</code> — vergleicht alle Kampagnen über die Zeit mit KPI-Tabelle und Verlaufskurven.</li>
+          <li data-de="UTF-16-Export wird automatisch erkannt; deutsche Datumsformate in allen PDFs." data-en="UTF-16 export auto-detected; German date formatting throughout all PDFs.">UTF-16-Export wird automatisch erkannt; deutsche Datumsformate in allen PDFs.</li>
+        </ul>
+      </div>
+      <div class="detail-block">
+        <div class="lbl" data-de="Für Kollegen ohne Python" data-en="For Colleagues Without Python">Für Kollegen ohne Python</div>
+        <div class="txt" data-de='Ein Ein-Klick-Starter (<code>newsletter_report.py</code>) führt alle drei Tools nacheinander aus. Daraus habe ich mit PyInstaller eine <strong>eigenständige .exe</strong> gebaut: CSV in den Ordner legen, Doppelklick — fertige PDFs und CSVs. Kein Python, keine Kommandozeile. Dazu eine bebilderte Anleitung als PDF.' data-en='A one-click launcher (<code>newsletter_report.py</code>) runs all three tools in sequence. From it I built a <strong>standalone .exe</strong> with PyInstaller: drop the CSV into the folder, double-click — finished PDFs and CSVs. No Python, no command line. Plus an illustrated step-by-step guide as a PDF.'>
+          Ein Ein-Klick-Starter (<code>newsletter_report.py</code>) führt alle drei Tools nacheinander aus. Daraus habe ich mit PyInstaller eine <strong>eigenständige .exe</strong> gebaut: CSV in den Ordner legen, Doppelklick — fertige PDFs und CSVs. Kein Python, keine Kommandozeile. Dazu eine bebilderte Anleitung als PDF.
+        </div>
+      </div>
+      <div class="detail-block">
+        <div class="lbl" data-de="Datenqualität &amp; Erkenntnisse" data-en="Data Quality &amp; Findings">Datenqualität &amp; Erkenntnisse</div>
+        <div class="txt" data-de='Die Auswertung deckte mehrere Daten-Vorbehalte auf, die direkt als Hinweise in die Reports eingebaut sind: „Neu vs. wiederkehrend" überschätzt „Neu" (Cookie-basiert), die Stadt-Geolokalisierung ist unzuverlässig (Report zeigt Land/Bundesland), und Link-Tags gehen verloren, wenn die Query hinter einem <code>#anker</code> steht — ein konkreter Fix fürs Newsletter-Template.' data-en='The analysis surfaced several data caveats, built directly into the reports as notes: "new vs. returning" overestimates "new" (cookie-based), city geolocation is unreliable (the report shows country/region instead), and link tags are lost when the query sits behind a <code>#anchor</code> — a concrete fix for the newsletter template.'>
+          Die Auswertung deckte mehrere Daten-Vorbehalte auf, die direkt als Hinweise in die Reports eingebaut sind: „Neu vs. wiederkehrend" überschätzt „Neu" (Cookie-basiert), die Stadt-Geolokalisierung ist unzuverlässig (Report zeigt Land/Bundesland), und Link-Tags gehen verloren, wenn die Query hinter einem <code>#anker</code> steht — ein konkreter Fix fürs Newsletter-Template.
+        </div>
+      </div>
+      <div class="detail-block">
+        <div class="lbl" data-de="Ergebnis" data-en="Result">Ergebnis</div>
+        <div class="txt" data-de="Aus einem rohen CSV-Export entstehen in Sekunden fertige Diagramme und Reports fürs wöchentliche Meeting — reproduzierbar und auch von Kollegen ohne technischen Hintergrund bedienbar." data-en="A raw CSV export becomes finished charts and reports for the weekly meeting in seconds — reproducible and usable even by non-technical colleagues.">
+          Aus einem rohen CSV-Export entstehen in Sekunden fertige Diagramme und Reports fürs wöchentliche Meeting — reproduzierbar und auch von Kollegen ohne technischen Hintergrund bedienbar.
+        </div>
+      </div>
+    </div>
+
+    <aside class="proj-aside">
+      <div class="detail-block">
+        <div class="lbl" data-de="Meine Rolle" data-en="My Role">Meine Rolle</div>
+        <div class="txt" data-de="Matomo-Tracking konzipiert und eingerichtet, Python-Tools entwickelt, .exe gebaut und die Anleitung für Kollegen erstellt — vollständig eigenständig." data-en="Designed and set up the Matomo tracking, developed the Python tools, built the .exe and wrote the colleague guide — fully independent.">
+          Matomo-Tracking konzipiert und eingerichtet, Python-Tools entwickelt, .exe gebaut und die Anleitung für Kollegen erstellt — vollständig eigenständig.
+        </div>
+      </div>
+      <div class="detail-block">
+        <div class="lbl" data-de="Technologie" data-en="Technology">Technologie</div>
+        <div class="txt">Matomo · Python · pandas · matplotlib · PyInstaller</div>
+      </div>
+      <div class="detail-block">
+        <div class="lbl" data-de="Datenbasis" data-en="Data Scope">Datenbasis</div>
+        <div class="txt" data-de="Matomo Visits-Log je Newsletter-Kampagne (UTF-16-CSV) · wöchentlicher Versand" data-en="Matomo visits log per newsletter campaign (UTF-16 CSV) · weekly send">
+          Matomo Visits-Log je Newsletter-Kampagne (UTF-16-CSV) · wöchentlicher Versand
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <div class="stat-callout">
+    <div class="stat-block">
+      <div class="stat-num">3</div>
+      <div class="stat-lbl" data-de="Python-Tools (Report, Link-Health, Trend)" data-en="Python tools (report, link health, trend)">Python-Tools (Report, Link-Health, Trend)</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-num">7</div>
+      <div class="stat-lbl" data-de="Report-Seiten je Export" data-en="Report pages per export">Report-Seiten je Export</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-num">1-Klick</div>
+      <div class="stat-lbl" data-de=".exe für Kollegen ohne Python" data-en=".exe for colleagues without Python">.exe für Kollegen ohne Python</div>
+    </div>
+  </div>
+
+  <div class="proj-gallery">
+    <div class="gallery-head" data-de="Screenshots &amp; Einblicke" data-en="Screenshots &amp; Insights">Screenshots &amp; Einblicke</div>
+    <div class="gallery-grid">
+      <div>
+        <div class="gallery-item">
+          <img src="../images/08-matomo-report-kpis.png" alt="Matomo Web-Report — KPI-Übersicht je Kampagne">
+        </div>
+        <div class="gallery-caption" data-de="Report-Seite 1 — KPIs je Kampagne (Besuche, eind. Besucher, Verweildauer, Absprungrate) plus Link-Tracking und E-Commerce" data-en="Report page 1 — KPIs per campaign (visits, unique visitors, time on site, bounce rate) plus link tracking and e-commerce">Report-Seite 1 — KPIs je Kampagne (Besuche, eind. Besucher, Verweildauer, Absprungrate) plus Link-Tracking und E-Commerce</div>
+      </div>
+      <div>
+        <div class="gallery-item">
+          <img src="../images/08-matomo-charts.png" alt="Matomo-Report — Traffic- und Engagement-Diagramme">
+        </div>
+        <div class="gallery-caption" data-de="Traffic &amp; Engagement — Besuche pro Tag und Tageszeit, Verweildauer- und Aktionsverteilung, automatisch aus der CSV erzeugt" data-en="Traffic &amp; engagement — visits per day and hour, time-on-site and actions distribution, generated automatically from the CSV">Traffic &amp; Engagement — Besuche pro Tag und Tageszeit, Verweildauer- und Aktionsverteilung, automatisch aus der CSV erzeugt</div>
+      </div>
+      <div>
+        <div class="gallery-item">
+          <img src="../images/08-matomo-trend.png" alt="Kampagnen-Trend — KPI-Verlaufskurven über mehrere Newsletter">
+        </div>
+        <div class="gallery-caption" data-de="Kampagnen-Trend — KPI-Verlaufskurven über mehrere Newsletter (Besuche, Aktionen/Besuch, Verweildauer, Absprungrate, Umsatz)" data-en="Campaign trend — KPI curves across multiple newsletters (visits, actions/visit, time on site, bounce rate, revenue)">Kampagnen-Trend — KPI-Verlaufskurven über mehrere Newsletter (Besuche, Aktionen/Besuch, Verweildauer, Absprungrate, Umsatz)</div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="proj-pagination">
+    <a class="proj-pagination-link" href="verkaufsdaten-analyse.html">
+      <div class="proj-pagination-dir">
+        <svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+        <span data-de="Vorheriges Projekt" data-en="Previous project">Vorheriges Projekt</span>
+      </div>
+      <div class="proj-pagination-num">07</div>
+      <div class="proj-pagination-title" data-de="Verkaufsdaten-Analyse" data-en="Sales Data Analysis">Verkaufsdaten-Analyse</div>
+    </a>
+    <a class="proj-pagination-link next" href="../index.html#projekte">
+      <div class="proj-pagination-dir">
+        <span data-de="Zurück zur Übersicht" data-en="Back to overview">Zurück zur Übersicht</span>
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </div>
+      <div class="proj-pagination-num" style="color:var(--accent)">↑</div>
+      <div class="proj-pagination-title" data-de="Alle Projekte" data-en="All projects">Alle Projekte</div>
+    </a>
+  </nav>
+
+  <div class="bigword" aria-hidden="true">08<em>.</em></div>
+
+  <footer class="footer">
+    <span class="mono-name">© 2026 Youness Weinkötz</span>
+    <a href="../index.html" style="color:inherit;text-decoration:none;" data-de="← Alle Projekte" data-en="← All Projects">← Alle Projekte</a>
+    <span><a href="#" style="color:inherit;text-decoration:none;">↑ Nach oben</a></span>
+  </footer>
+
+</div>
+
+<script src="../gallery.js"></script>
+<script>
+const LANG_KEY = 'portfolio-lang';
+let currentLang = localStorage.getItem(LANG_KEY) || 'de';
+function applyLang() {
+  document.querySelectorAll('.lang-opt').forEach(opt => opt.classList.toggle('active', opt.getAttribute('data-lang') === currentLang));
+  document.querySelectorAll('[data-de]').forEach(el => { el.innerHTML = currentLang === 'de' ? el.getAttribute('data-de') : el.getAttribute('data-en'); });
+}
+function toggleLang() {
+  currentLang = currentLang === 'de' ? 'en' : 'de';
+  localStorage.setItem(LANG_KEY, currentLang);
+  applyLang();
+}
+applyLang();
+</script>
+</body>
+</html>
