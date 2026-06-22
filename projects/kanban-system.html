@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kanban-System — Youness Weinkötz</title>
+<meta name="description" content="Von der Neuordnung eines ganzen Reparaturlagers über die Einführung von Kanban-Karten bis hin zu einem automatisierten Mastersheet, das die Kartenerstellung um 90% beschleunigt.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:title" content="Kanban-System — Aufbau & Optimierung — Youness Weinkötz">
+<meta property="og:description" content="Von der Neuordnung eines ganzen Reparaturlagers über die Einführung von Kanban-Karten bis hin zu einem automatisierten Mastersheet, das die Kartenerstellung um 90% beschleunigt.">
+<meta property="og:image" content="../images/06-kanban-app.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<div class="shell">
+
+  <header class="masthead">
+    <div class="masthead-inner">
+      <div class="left">
+        <a class="back-link" href="../Portfolio.html">
+          <svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+          <span data-de="Übersicht" data-en="Overview">Übersicht</span>
+        </a>
+      </div>
+      <div class="center">
+        <div class="proj-nav">
+          <a class="proj-nav-arrow" href="kundeninformation.html" title="Vorheriges Projekt">
+            <svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+          </a>
+          <span class="proj-nav-count">06 / 07</span>
+          <a class="proj-nav-arrow" href="verkaufsdaten-analyse.html" title="Nächstes Projekt">
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="right">
+        <button class="lang-toggle" onclick="toggleLang()" aria-label="Switch language">
+          <span class="lang-opt" data-lang="de">DE</span>
+          <span class="lang-sep">/</span>
+          <span class="lang-opt" data-lang="en">EN</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="proj-hero">
+    <span class="proj-num" aria-hidden="true">06</span>
+    <h1 class="proj-title" data-de="Kanban-System — Aufbau &amp; Optimierung" data-en="Kanban System — Build &amp; Optimisation">Kanban-System — Aufbau &amp; Optimierung</h1>
+    <p class="proj-subtitle" data-de="Von der Neuordnung eines ganzen Reparaturlagers über die Einführung von Kanban-Karten bis hin zu einem automatisierten Mastersheet, das die Kartenerstellung um 90% beschleunigt." data-en="From restructuring an entire repair warehouse to building Kanban cards to an automated mastersheet that sped up card creation by 90%.">
+      Von der Neuordnung eines ganzen Reparaturlagers über die Einführung von Kanban-Karten bis hin zu einem automatisierten Mastersheet, das die Kartenerstellung um 90% beschleunigt.
+    </p>
+    <div class="proj-hero-meta">
+      <span><b data-de="Rolle" data-en="Role">Rolle</b><span data-de="Hauptverantwortlich" data-en="Lead">Hauptverantwortlich</span></span>
+      <span><b data-de="Umfang" data-en="Scope">Umfang</b><span data-de="3 Phasen" data-en="3 Phases">3 Phasen</span></span>
+      <span><b data-de="Wirkung" data-en="Impact">Wirkung</b><em data-de="90% Zeitersparnis" data-en="90% Time Saved">90% Zeitersparnis</em></span>
+    </div>
+  </div>
+
+  <div class="proj-content">
+    <div>
+      <div class="detail-block">
+        <div class="lbl" data-de="Phase 1 · Reparaturlager" data-en="Phase 1 · Repair Warehouse">Phase 1 · Reparaturlager</div>
+        <div class="txt" data-de='Als Produktionsmitarbeiter in der Reparaturabteilung habe ich das <strong>gesamte Reparaturlager neu strukturiert</strong> und war maßgeblich daran beteiligt, sämtliche Materialien in das Kanban-System aufzunehmen. Die Neuordnung umfasste Lagerplatzvergabe, Bestandsaufnahme und die Erstellung aller zugehörigen Kanban-Karten.' data-en='As a production worker in the repair department, I <strong>completely restructured the repair warehouse</strong> and was the leading contributor in adding all materials to the Kanban system. This included storage assignments, inventory checks and creating all associated Kanban cards.'>
+          Als Produktionsmitarbeiter in der Reparaturabteilung habe ich das <strong>gesamte Reparaturlager neu strukturiert</strong> und war maßgeblich daran beteiligt, sämtliche Materialien in das Kanban-System aufzunehmen. Die Neuordnung umfasste Lagerplatzvergabe, Bestandsaufnahme und die Erstellung aller zugehörigen Kanban-Karten.
+        </div>
+      </div>
+      <div class="detail-block">
+        <div class="lbl" data-de="Phase 2 · Erweiterung &amp; Lageplanung" data-en="Phase 2 · Expansion &amp; Storage Planning">Phase 2 · Erweiterung &amp; Lageplanung</div>
+        <div class="txt" data-de='In der Logistikabteilung habe ich nicht nur weitere Kanban-Karten erstellt, sondern auch <strong>Lagerlösungen konzipiert</strong>, um möglichst viele Materialien in das bestehende Kanban-System zu integrieren — einschließlich Platzoptimierung und Regalzuweisungen.' data-en='In the logistics department, I not only created more Kanban cards but also <strong>designed storage solutions</strong> to integrate as many materials as possible into the existing system — including space optimisation and shelf assignments.'>
+          In der Logistikabteilung habe ich nicht nur weitere Kanban-Karten erstellt, sondern auch <strong>Lagerlösungen konzipiert</strong>, um möglichst viele Materialien in das bestehende Kanban-System zu integrieren — einschließlich Platzoptimierung und Regalzuweisungen.
+        </div>
+      </div>
+      <div class="detail-block">
+        <div class="lbl" data-de="Phase 3 · Kanban Mastersheet" data-en="Phase 3 · Kanban Mastersheet">Phase 3 · Kanban Mastersheet</div>
+        <div class="txt" data-de='Die manuelle Kartenerstellung dauerte rund <strong>10 Minuten pro Materialgruppe</strong>. Das von mir entwickelte Mastersheet automatisiert den gesamten Prozess und reduziert ihn auf <strong>unter eine Minute pro Batch</strong> — eine Zeitersparnis von über 90%.' data-en='Manual card creation took about <strong>10 minutes per material group</strong>. The mastersheet I developed automates the entire process, reducing it to <strong>under one minute per batch</strong> — a time saving of over 90%.'>
+          Die manuelle Kartenerstellung dauerte rund <strong>10 Minuten pro Materialgruppe</strong>. Das von mir entwickelte Mastersheet automatisiert den gesamten Prozess und reduziert ihn auf <strong>unter eine Minute pro Batch</strong> — eine Zeitersparnis von über 90%.
+        </div>
+      </div>
+      <div class="detail-block">
+        <div class="lbl" data-de="Ergebnis" data-en="Result">Ergebnis</div>
+        <ul>
+          <li data-de="Reparaturlager komplett neu organisiert und in Kanban integriert" data-en="Repair warehouse completely reorganised and integrated into Kanban">Reparaturlager komplett neu organisiert und in Kanban integriert</li>
+          <li data-de="Lagerlösungen für maximale Materialabdeckung im Kanban-System" data-en="Storage solutions for maximum material coverage in the Kanban system">Lagerlösungen für maximale Materialabdeckung im Kanban-System</li>
+          <li data-de="<strong>90% Zeitersparnis</strong> bei der Kanban-Kartenerstellung" data-en="<strong>90% time saved</strong> on Kanban card creation"><strong>90% Zeitersparnis</strong> bei der Kanban-Kartenerstellung</li>
+          <li data-de="Weniger Fehler durch automatisierte Datenübernahme" data-en="Fewer errors through automated data transfer">Weniger Fehler durch automatisierte Datenübernahme</li>
+        </ul>
+      </div>
+    </div>
+
+    <aside class="proj-aside">
+      <div class="detail-block">
+        <div class="lbl" data-de="Meine Rolle" data-en="My Role">Meine Rolle</div>
+        <div class="txt" data-de="Von der operativen Umsetzung im Lager bis zur Entwicklung des automatisierten Mastersheets — über alle drei Phasen hinweg hauptverantwortlich." data-en="From hands-on warehouse work to developing the automated mastersheet — lead responsible across all three phases.">
+          Von der operativen Umsetzung im Lager bis zur Entwicklung des automatisierten Mastersheets — über alle drei Phasen hinweg hauptverantwortlich.
+        </div>
+      </div>
+      <div class="detail-block">
+        <div class="lbl" data-de="Wirkung" data-en="Impact">Wirkung</div>
+        <div class="txt" data-de="<strong>10 min → &lt;1 min</strong> pro Batch. Ein wiederkehrender Workflow neu gedacht." data-en="<strong>10 min → &lt;1 min</strong> per batch. A recurring workflow reimagined.">
+          <strong>10 min → &lt;1 min</strong> pro Batch. Ein wiederkehrender Workflow neu gedacht.
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <div class="stat-callout">
+    <div class="stat-block">
+      <div class="stat-num">10 min <span class="stat-arrow">→</span> &lt;1 min</div>
+      <div class="stat-lbl" data-de="pro Kanban-Kartenbatch" data-en="per Kanban card batch">pro Kanban-Kartenbatch</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-num">90<span class="stat-unit">%</span></div>
+      <div class="stat-lbl" data-de="Zeitersparnis bei der Kartenerstellung" data-en="Time saved on card creation">Zeitersparnis bei der Kartenerstellung</div>
+    </div>
+  </div>
+
+  <div class="proj-gallery">
+    <div class="gallery-head" data-de="Screenshots &amp; Einblicke" data-en="Screenshots &amp; Insights">Screenshots &amp; Einblicke</div>
+    <div class="gallery-grid">
+      <div>
+        <div class="gallery-item">
+          <img src="../images/06-kanban-app.png" alt="Kanban Karten App — Mastersheet-Verarbeitung">
+        </div>
+        <div class="gallery-caption" data-de="Kanban Karten App — Mastersheet auswählen, Karten automatisch generieren" data-en="Kanban Cards App — select mastersheet, generate cards automatically">Kanban Karten App — Mastersheet auswählen, Karten automatisch generieren</div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="proj-pagination">
+    <a class="proj-pagination-link" href="kundeninformation.html">
+      <div class="proj-pagination-dir">
+        <svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+        <span data-de="Vorheriges Projekt" data-en="Previous project">Vorheriges Projekt</span>
+      </div>
+      <div class="proj-pagination-num">05</div>
+      <div class="proj-pagination-title" data-de="Sonderanfertigung — Kundeninformation" data-en="Custom Shoes — Customer Information">Sonderanfertigung — Kundeninformation</div>
+    </a>
+    <a class="proj-pagination-link next" href="verkaufsdaten-analyse.html">
+      <div class="proj-pagination-dir">
+        <span data-de="Nächstes Projekt" data-en="Next project">Nächstes Projekt</span>
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </div>
+      <div class="proj-pagination-num">07</div>
+      <div class="proj-pagination-title" data-de="Verkaufsdaten-Analyse &amp; Trenderkennung" data-en="Sales Data Analysis &amp; Trend Detection">Verkaufsdaten-Analyse &amp; Trenderkennung</div>
+    </a>
+  </nav>
+
+  <div class="bigword" aria-hidden="true">06<em>.</em></div>
+
+  <footer class="footer">
+    <span class="mono-name">© 2026 Youness Weinkötz</span>
+    <a href="../Portfolio.html" style="color:inherit;text-decoration:none;" data-de="← Alle Projekte" data-en="← All Projects">← Alle Projekte</a>
+    <span><a href="#" style="color:inherit;text-decoration:none;">↑ Nach oben</a></span>
+  </footer>
+
+</div>
+
+<script src="../gallery.js"></script>
+<script>
+const LANG_KEY = 'portfolio-lang';
+let currentLang = localStorage.getItem(LANG_KEY) || 'de';
+function applyLang() {
+  document.querySelectorAll('.lang-opt').forEach(opt => opt.classList.toggle('active', opt.getAttribute('data-lang') === currentLang));
+  document.querySelectorAll('[data-de]').forEach(el => { el.innerHTML = currentLang === 'de' ? el.getAttribute('data-de') : el.getAttribute('data-en'); });
+}
+function toggleLang() {
+  currentLang = currentLang === 'de' ? 'en' : 'de';
+  localStorage.setItem(LANG_KEY, currentLang);
+  applyLang();
+}
+applyLang();
+</script>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verkaufsdaten-Analyse — Youness Weinkötz</title>
+<meta name="description" content="Ein Python-Skript verarbeitet 18 Monate Verkaufsdaten aus dem ERP und erzeugt einen vollständig interaktiven HTML-Bericht — mit Zeitreihenanalyse, A/B-Periodenvergleich und Saisonalitätserkennung über 43 Filialen.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:title" content="Verkaufsdaten-Analyse & Trenderkennung — Youness Weinkötz">
+<meta property="og:description" content="Ein Python-Skript verarbeitet 18 Monate Verkaufsdaten aus dem ERP und erzeugt einen vollständig interaktiven HTML-Bericht — mit Zeitreihenanalyse, A/B-Periodenvergleich und Saisonalitätserkennung über 43 Filialen.">
+<meta property="og:image" content="../images/07-analyse-overview.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<div class="shell">
+
+  <header class="masthead">
+    <div class="masthead-inner">
+      <div class="left">
+        <a class="back-link" href="../Portfolio.html">
+          <svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+          <span data-de="Übersicht" data-en="Overview">Übersicht</span>
+        </a>
+      </div>
+      <div class="center">
+        <div class="proj-nav">
+          <a class="proj-nav-arrow" href="kanban-system.html" title="Vorheriges Projekt">
+            <svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+          </a>
+          <span class="proj-nav-count">07 / 07</span>
+        </div>
+      </div>
+      <div class="right">
+        <button class="lang-toggle" onclick="toggleLang()" aria-label="Switch language">
+          <span class="lang-opt" data-lang="de">DE</span>
+          <span class="lang-sep">/</span>
+          <span class="lang-opt" data-lang="en">EN</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="proj-hero">
+    <span class="proj-num" aria-hidden="true">07</span>
+    <h1 class="proj-title" data-de="Verkaufsdaten-Analyse &amp; Trenderkennung" data-en="Sales Data Analysis &amp; Trend Detection">Verkaufsdaten-Analyse &amp; Trenderkennung</h1>
+    <p class="proj-subtitle" data-de="Ein Python-Skript verarbeitet 18 Monate Verkaufsdaten aus dem ERP und erzeugt einen vollständig interaktiven HTML-Bericht — mit Zeitreihenanalyse, A/B-Periodenvergleich und Saisonalitätserkennung über 43 Filialen und 9.700+ Artikel." data-en="A Python script processes 18 months of ERP sales data and generates a fully interactive HTML report — with time-series analysis, A/B period comparison and seasonality detection across 43 stores and 9,700+ articles.">
+      Ein Python-Skript verarbeitet 18 Monate Verkaufsdaten aus dem ERP und erzeugt einen vollständig interaktiven HTML-Bericht — mit Zeitreihenanalyse, A/B-Periodenvergleich und Saisonalitätserkennung über 43 Filialen und 9.700+ Artikel.
+    </p>
+    <div class="proj-hero-meta">
+      <span><b data-de="Rolle" data-en="Role">Rolle</b><span data-de="Eigeninitiative" data-en="Self-Initiated">Eigeninitiative</span></span>
+      <span><b data-de="Stack" data-en="Stack">Stack</b>Python · HTML/JS</span>
+      <span><b data-de="Wirkung" data-en="Impact">Wirkung</b><em data-de="95.843 Paare analysiert" data-en="95,843 pairs analysed">95.843 Paare analysiert</em></span>
+    </div>
+  </div>
+
+  <div class="proj-content">
+    <div>
+      <div class="detail-block">
+        <div class="lbl" data-de="Ausgangslage" data-en="Background">Ausgangslage</div>
+        <div class="txt" data-de="18 Monate Verkaufsdaten lagen als CSV-Export aus dem ERP vor — jedoch ohne strukturierte Auswertung. Saisonale Muster, Trendentwicklungen und Filialunterschiede waren nicht sichtbar." data-en="18 months of sales data existed as CSV exports from the ERP system — but without any structured analysis. Seasonal patterns, trend developments and branch differences were not visible.">
+          18 Monate Verkaufsdaten lagen als CSV-Export aus dem ERP vor — jedoch ohne strukturierte Auswertung. Saisonale Muster, Trendentwicklungen und Filialunterschiede waren nicht sichtbar.
+        </div>
+      </div>
+      <div class="detail-block">
+        <div class="lbl" data-de="Lösung" data-en="Solution">Lösung</div>
+        <div class="txt" data-de='Ein Python-Skript (<code>analyse.py</code>) liest die CSV-Daten, berechnet Kennzahlen und erzeugt einen <strong>vollständig selbstständigen HTML-Bericht</strong> — kein Server, keine Abhängigkeiten, direkt im Browser öffenbar.' data-en='A Python script (<code>analyse.py</code>) reads the CSV data, calculates key metrics and generates a <strong>fully self-contained HTML report</strong> — no server, no dependencies, opens directly in any browser.'>
+          Ein Python-Skript (<code>analyse.py</code>) liest die CSV-Daten, berechnet Kennzahlen und erzeugt einen <strong>vollständig selbstständigen HTML-Bericht</strong> — kein Server, keine Abhängigkeiten, direkt im Browser öffenbar.
+        </div>
+      </div>
+      <div class="detail-block">
+        <div class="lbl" data-de="Funktionen des Berichts" data-en="Report Features">Funktionen des Berichts</div>
+        <ul>
+          <li data-de="Interaktiver Datumsfilter mit Schnellauswahl (letzte 30/90/180 Tage)" data-en="Interactive date filter with quick-select buttons (last 30/90/180 days)">Interaktiver Datumsfilter mit Schnellauswahl (letzte 30/90/180 Tage)</li>
+          <li data-de="A/B-Periodenvergleich — zwei beliebige Zeiträume gegenüberstellen" data-en="A/B period comparison — compare any two custom time ranges">A/B-Periodenvergleich — zwei beliebige Zeiträume gegenüberstellen</li>
+          <li data-de="Klickbare Monatsbalken für Drilldown in einzelne Monate" data-en="Clickable monthly bars for drilldown into individual months">Klickbare Monatsbalken für Drilldown in einzelne Monate</li>
+          <li data-de="Saisonalitätsanalyse und Trenderkennung über alle Filialen" data-en="Seasonality analysis and trend detection across all branches">Saisonalitätsanalyse und Trenderkennung über alle Filialen</li>
+          <li data-de="KPIs: 95.843 Paare · 9.715 Artikel · 122 Produktfamilien · 43 Filialen" data-en="KPIs: 95,843 pairs · 9,715 articles · 122 product families · 43 branches">KPIs: 95.843 Paare · 9.715 Artikel · 122 Produktfamilien · 43 Filialen</li>
+        </ul>
+      </div>
+      <div class="detail-block">
+        <div class="lbl" data-de="Ergebnis" data-en="Result">Ergebnis</div>
+        <div class="txt" data-de="Aus einem rohen CSV-Export wird ein professioneller, interaktiver Analysebericht — ohne externe Tools oder BI-Software. Der Bericht kann jederzeit mit einer aktualisierten CSV neu generiert werden." data-en="A raw CSV export becomes a professional, interactive analysis report — without external tools or BI software. The report can be regenerated at any time with an updated CSV.">
+          Aus einem rohen CSV-Export wird ein professioneller, interaktiver Analysebericht — ohne externe Tools oder BI-Software. Der Bericht kann jederzeit mit einer aktualisierten CSV neu generiert werden.
+        </div>
+      </div>
+    </div>
+
+    <aside class="proj-aside">
+      <div class="detail-block">
+        <div class="lbl" data-de="Meine Rolle" data-en="My Role">Meine Rolle</div>
+        <div class="txt" data-de="Konzept, Python-Entwicklung, Report-Design und Umsetzung — vollständig eigenständig." data-en="Concept, Python development, report design and implementation — fully independent.">
+          Konzept, Python-Entwicklung, Report-Design und Umsetzung — vollständig eigenständig.
+        </div>
+      </div>
+      <div class="detail-block">
+        <div class="lbl" data-de="Technologie" data-en="Technology">Technologie</div>
+        <div class="txt">Python · pandas · CSV → self-contained HTML/JS</div>
+      </div>
+      <div class="detail-block">
+        <div class="lbl" data-de="Datenbasis" data-en="Data Scope">Datenbasis</div>
+        <div class="txt" data-de="18 Monate ERP-Export · 95.615 Transaktionen · 43 Filialen" data-en="18 months ERP export · 95,615 transactions · 43 branches">
+          18 Monate ERP-Export · 95.615 Transaktionen · 43 Filialen
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <div class="proj-gallery">
+    <div class="gallery-head" data-de="Screenshots &amp; Einblicke" data-en="Screenshots &amp; Insights">Screenshots &amp; Einblicke</div>
+    <div class="gallery-grid">
+      <div>
+        <div class="gallery-item">
+          <img src="../images/07-analyse-overview.png" alt="Verkaufsdaten-Analyse — Übersichtskarten und Monatsbalken">
+        </div>
+        <div class="gallery-caption" data-de="Übersicht — KPI-Karten (95.843 Paare, 43 Filialen) und interaktives Monatsdiagramm" data-en="Overview — KPI cards (95,843 pairs, 43 branches) and interactive monthly chart">Übersicht — KPI-Karten (95.843 Paare, 43 Filialen) und interaktives Monatsdiagramm</div>
+      </div>
+      <div>
+        <div class="gallery-item">
+          <img src="../images/07-analyse-charts.png" alt="Verkaufsdaten-Analyse — Saisonalität und Filialvergleich">
+        </div>
+        <div class="gallery-caption" data-de="Saisonalitätskurve und Filial-Rankingdiagramm — beide interaktiv filterbar" data-en="Seasonality curve and branch ranking chart — both interactively filterable">Saisonalitätskurve und Filial-Rankingdiagramm — beide interaktiv filterbar</div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="proj-pagination">
+    <a class="proj-pagination-link" href="kanban-system.html">
+      <div class="proj-pagination-dir">
+        <svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+        <span data-de="Vorheriges Projekt" data-en="Previous project">Vorheriges Projekt</span>
+      </div>
+      <div class="proj-pagination-num">06</div>
+      <div class="proj-pagination-title" data-de="Kanban-System — Aufbau &amp; Optimierung" data-en="Kanban System — Build &amp; Optimisation">Kanban-System — Aufbau &amp; Optimierung</div>
+    </a>
+    <a class="proj-pagination-link next" href="../Portfolio.html#projekte">
+      <div class="proj-pagination-dir">
+        <span data-de="Zurück zur Übersicht" data-en="Back to overview">Zurück zur Übersicht</span>
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </div>
+      <div class="proj-pagination-num" style="color:var(--accent)">↑</div>
+      <div class="proj-pagination-title" data-de="Alle Projekte" data-en="All projects">Alle Projekte</div>
+    </a>
+  </nav>
+
+  <div class="bigword" aria-hidden="true">07<em>.</em></div>
+
+  <footer class="footer">
+    <span class="mono-name">© 2026 Youness Weinkötz</span>
+    <a href="../Portfolio.html" style="color:inherit;text-decoration:none;" data-de="← Alle Projekte" data-en="← All Projects">← Alle Projekte</a>
+    <span><a href="#" style="color:inherit;text-decoration:none;">↑ Nach oben</a></span>
+  </footer>
+
+</div>
+
+<script src="../gallery.js"></script>
+<script>
+const LANG_KEY = 'portfolio-lang';
+let currentLang = localStorage.getItem(LANG_KEY) || 'de';
+function applyLang() {
+  document.querySelectorAll('.lang-opt').forEach(opt => opt.classList.toggle('active', opt.getAttribute('data-lang') === currentLang));
+  document.querySelectorAll('[data-de]').forEach(el => { el.innerHTML = currentLang === 'de' ? el.getAttribute('data-de') : el.getAttribute('data-en'); });
+}
+function toggleLang() {
+  currentLang = currentLang === 'de' ? 'en' : 'de';
+  localStorage.setItem(LANG_KEY, currentLang);
+  applyLang();
+}
+applyLang();
+</script>
+</body>
+</html>

@@ -5,783 +5,18 @@
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Youness Weinkötz — Projektportfolio</title>
+<meta name="description" content="Vom Produktionsmitarbeiter zum Projektverantwortlichen in einem Jahr — 7 abgeschlossene Projekte in Prozessoptimierung, Datenbankentwicklung und UI/UX.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:title" content="Youness Weinkötz — Projektportfolio">
+<meta property="og:description" content="Vom Produktionsmitarbeiter zum Projektverantwortlichen in einem Jahr — 7 abgeschlossene Projekte in Prozessoptimierung, Datenbankentwicklung und UI/UX.">
+<meta property="og:image" content="images/07-analyse-overview.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
-
-<style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-:root {
-  --ink: #1a1814;
-  --ink-mid: #4a463d;
-  --ink-light: #8a8478;
-  --ink-faint: #cfc8b9;
-  --sand: #efebe1;
-  --sand-dark: #e2dccd;
-  --sand-darker: #c9c2af;
-  --cream: #f7f3ea;
-  --paper: #faf7ef;
-  --accent: #1f7a3f;
-  --accent-dark: #155028;
-  --accent-soft: #e3eee4;
-  --serif: 'DM Serif Display', 'Cormorant Garamond', Georgia, serif;
-  --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --mono: 'JetBrains Mono', ui-monospace, monospace;
-  --shell-pad: clamp(1.25rem, 4vw, 2.5rem);
-}
-
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: var(--sans);
-  color: var(--ink);
-  background: var(--paper);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  overflow-x: hidden;
-}
-
-/* paper grain */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0.35;
-  mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.45 0 0 0 0 0.35 0 0 0 0.08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-}
-
-.shell { position: relative; z-index: 2; }
-
-/* ════════════════════════════════════════════ */
-/*  MASTHEAD                                    */
-/* ════════════════════════════════════════════ */
-.masthead {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  background: color-mix(in oklab, var(--paper) 88%, transparent);
-  backdrop-filter: blur(14px) saturate(140%);
-  -webkit-backdrop-filter: blur(14px) saturate(140%);
-  border-bottom: 1px solid var(--sand-dark);
-}
-.masthead-inner {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 14px var(--shell-pad);
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  gap: 1rem;
-  font-family: var(--mono);
-  font-size: 10.5px;
-  letter-spacing: 0.04em;
-  color: var(--ink-mid);
-}
-.masthead .left { display: flex; gap: 1.5rem; align-items: center; }
-.masthead .right { display: flex; gap: 1.5rem; justify-content: flex-end; align-items: center; }
-.masthead .center { font-family: var(--sans); font-size: 11px; font-weight: 500; color: var(--ink); letter-spacing: 0.06em; text-transform: uppercase; }
-.masthead .role-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 9px;
-  border: 1px solid var(--sand-darker);
-  border-radius: 100px;
-  font-size: 10px;
-  letter-spacing: 0.06em;
-  color: var(--ink-mid);
-  text-transform: uppercase;
-}
-.status-dot {
-  position: relative;
-  width: 7px; height: 7px;
-  border-radius: 50%;
-  background: var(--accent);
-  flex-shrink: 0;
-}
-.status-dot::after {
-  content: '';
-  position: absolute;
-  inset: -3px;
-  border-radius: 50%;
-  background: var(--accent);
-  opacity: 0.35;
-  animation: ping 2s ease-out infinite;
-}
-@keyframes ping {
-  0%   { transform: scale(0.8); opacity: 0.5; }
-  100% { transform: scale(2.2); opacity: 0;   }
-}
-
-/* ════════════════════════════════════════════ */
-/*  HERO                                        */
-/* ════════════════════════════════════════════ */
-.hero {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: clamp(3rem, 8vh, 6rem) var(--shell-pad) clamp(3rem, 6vh, 5rem);
-  position: relative;
-}
-
-.hero-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 280px);
-  gap: clamp(2rem, 5vw, 4rem);
-  align-items: end;
-}
-
-.hero-kicker {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--ink-mid);
-  letter-spacing: 0.06em;
-  margin-bottom: 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-.hero-kicker::before {
-  content: '';
-  width: 28px;
-  height: 1px;
-  background: var(--ink-mid);
-}
-
-.hero-name {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: clamp(3.2rem, 9.5vw, 8rem);
-  line-height: 0.95;
-  letter-spacing: -0.025em;
-  color: var(--ink);
-  margin-bottom: 0.5rem;
-}
-.hero-name .surname {
-  font-style: italic;
-  color: var(--accent);
-  letter-spacing: -0.04em;
-}
-
-.hero-tag {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: clamp(1.3rem, 2.8vw, 2rem);
-  font-weight: 400;
-  line-height: 1.2;
-  color: var(--ink-mid);
-  margin-bottom: 2.5rem;
-  max-width: 38ch;
-}
-.hero-tag em {
-  color: var(--ink);
-  font-style: italic;
-}
-
-.hero-intro {
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 1.7;
-  color: var(--ink-mid);
-  max-width: 56ch;
-}
-.hero-intro strong {
-  font-weight: 500;
-  color: var(--ink);
-}
-
-/* Side meta column */
-.hero-meta {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--ink-mid);
-  border-left: 1px solid var(--sand-dark);
-  padding-left: 1.25rem;
-}
-.hero-meta dl { display: grid; gap: 0.9rem; }
-.hero-meta dt {
-  font-size: 9.5px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-light);
-  margin-bottom: 3px;
-}
-.hero-meta dd {
-  font-size: 12px;
-  color: var(--ink);
-  line-height: 1.4;
-}
-.hero-meta dd em { color: var(--accent); font-style: normal; font-weight: 500; }
-
-/* ════════════════════════════════════════════ */
-/*  CAREER ARC                                  */
-/* ════════════════════════════════════════════ */
-.arc {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem var(--shell-pad) 4rem;
-}
-.arc-rail {
-  position: relative;
-  height: 1px;
-  background: var(--sand-dark);
-  margin: 3rem 0 1.25rem;
-}
-.arc-steps {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-}
-.arc-step {
-  position: relative;
-  padding-top: 1.5rem;
-}
-.arc-step::before {
-  content: '';
-  position: absolute;
-  top: -4px; left: 0;
-  width: 9px; height: 9px;
-  border-radius: 50%;
-  background: var(--paper);
-  border: 1.5px solid var(--ink-faint);
-}
-.arc-step.current::before {
-  background: var(--accent);
-  border-color: var(--accent);
-  box-shadow: 0 0 0 4px var(--accent-soft);
-}
-.arc-step .arc-year {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.06em;
-  color: var(--ink-light);
-  margin-bottom: 0.5rem;
-}
-.arc-step .arc-role {
-  font-family: var(--serif);
-  font-size: 1.05rem;
-  line-height: 1.25;
-  color: var(--ink);
-  margin-bottom: 0.35rem;
-}
-.arc-step.current .arc-role { color: var(--accent-dark); }
-.arc-step .arc-detail {
-  font-size: 12px;
-  color: var(--ink-light);
-  line-height: 1.45;
-}
-
-/* ════════════════════════════════════════════ */
-/*  KPI STRIP                                   */
-/* ════════════════════════════════════════════ */
-.kpi-band {
-  border-top: 1px solid var(--sand-dark);
-  border-bottom: 1px solid var(--sand-dark);
-  background: linear-gradient(180deg, var(--cream) 0%, var(--paper) 100%);
-}
-.kpi-inner {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: clamp(2rem, 5vh, 3.5rem) var(--shell-pad);
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-}
-.kpi {
-  position: relative;
-  padding: 0 1.25rem;
-}
-.kpi + .kpi { border-left: 1px solid var(--sand-dark); }
-.kpi-num {
-  font-family: var(--serif);
-  font-size: clamp(2.4rem, 5vw, 3.4rem);
-  line-height: 1;
-  letter-spacing: -0.02em;
-  color: var(--ink);
-  display: flex;
-  align-items: baseline;
-  gap: 0.15rem;
-}
-.kpi-num .unit {
-  font-size: 0.45em;
-  font-family: var(--sans);
-  font-weight: 400;
-  color: var(--ink-mid);
-  letter-spacing: 0;
-  margin-left: 0.2rem;
-}
-.kpi-label {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink-light);
-  margin-top: 0.75rem;
-  line-height: 1.4;
-}
-.kpi-label strong { color: var(--ink-mid); font-weight: 500; }
-
-/* ════════════════════════════════════════════ */
-/*  PROJECTS                                    */
-/* ════════════════════════════════════════════ */
-.section {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: clamp(3.5rem, 8vh, 6rem) var(--shell-pad);
-}
-
-.section-head {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: end;
-  gap: 2rem;
-  margin-bottom: 3rem;
-  padding-bottom: 1.25rem;
-  border-bottom: 1px solid var(--sand-dark);
-}
-.section-eyebrow {
-  font-family: var(--mono);
-  font-size: 10.5px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--ink-light);
-  margin-bottom: 0.75rem;
-}
-.section-title {
-  font-family: var(--serif);
-  font-size: clamp(2rem, 4.5vw, 3rem);
-  font-weight: 400;
-  line-height: 1.05;
-  letter-spacing: -0.015em;
-}
-.section-title em {
-  font-style: italic;
-  color: var(--accent);
-}
-.section-count {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--ink-light);
-  letter-spacing: 0.08em;
-  white-space: nowrap;
-  padding-bottom: 6px;
-}
-
-/* Project list */
-.projects { display: flex; flex-direction: column; }
-
-.project {
-  position: relative;
-  border-top: 1px solid var(--sand-dark);
-  cursor: pointer;
-  transition: background 0.4s ease;
-}
-.project:last-child { border-bottom: 1px solid var(--sand-dark); }
-.project:hover { background: rgba(31, 122, 63, 0.025); }
-
-.project-row {
-  display: grid;
-  grid-template-columns: 80px 1fr auto 44px;
-  gap: clamp(1rem, 3vw, 2.5rem);
-  align-items: start;
-  padding: 1.75rem 0;
-}
-
-.project-num {
-  font-family: var(--serif);
-  font-size: 2.4rem;
-  line-height: 0.9;
-  color: var(--ink-faint);
-  letter-spacing: -0.02em;
-  transition: color 0.3s ease;
-}
-.project:hover .project-num { color: var(--accent); }
-
-.project-body { min-width: 0; }
-
-.project-title {
-  font-family: var(--serif);
-  font-size: clamp(1.4rem, 2.6vw, 1.85rem);
-  font-weight: 400;
-  line-height: 1.15;
-  letter-spacing: -0.01em;
-  color: var(--ink);
-  margin-bottom: 0.65rem;
-}
-.project-subtitle {
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--ink-mid);
-  line-height: 1.55;
-  max-width: 64ch;
-  margin-bottom: 0.9rem;
-}
-
-.tag-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0;
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink-light);
-}
-.tag-row .tag {
-  padding: 4px 10px;
-}
-.tag-row .tag.impact {
-  color: var(--accent-dark);
-  background: var(--accent-soft);
-  border-radius: 100px;
-  font-weight: 500;
-  margin-right: 6px;
-}
-.tag-row .tag.divider {
-  padding: 0 6px;
-  color: var(--ink-faint);
-}
-
-/* meta column on the right */
-.project-meta {
-  font-family: var(--mono);
-  font-size: 10.5px;
-  color: var(--ink-light);
-  text-align: right;
-  letter-spacing: 0.04em;
-  min-width: 110px;
-  padding-top: 8px;
-}
-.project-meta div + div { margin-top: 4px; }
-.project-meta b {
-  display: block;
-  font-weight: 500;
-  color: var(--ink-mid);
-  margin-bottom: 2px;
-  font-size: 9.5px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-.project-toggle {
-  width: 44px; height: 44px;
-  border-radius: 50%;
-  border: 1px solid var(--sand-dark);
-  background: var(--paper);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  margin-top: 4px;
-  transition: all 0.25s ease;
-}
-.project:hover .project-toggle {
-  border-color: var(--accent);
-  background: var(--accent);
-}
-.project:hover .project-toggle svg { stroke: var(--paper); }
-.project-toggle svg {
-  width: 14px; height: 14px;
-  stroke: var(--ink-mid);
-  transition: stroke 0.25s ease, transform 0.4s ease;
-}
-.project.open .project-toggle { background: var(--accent); border-color: var(--accent); }
-.project.open .project-toggle svg { stroke: var(--paper); transform: rotate(180deg); }
-
-/* Detail panel */
-.project-detail {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.55s cubic-bezier(0.4, 0, 0.1, 1);
-}
-.project.open .project-detail { grid-template-rows: 1fr; }
-.project-detail > .clip { overflow: hidden; }
-
-.detail-grid {
-  display: grid;
-  grid-template-columns: 80px 1fr;
-  gap: clamp(1rem, 3vw, 2.5rem);
-  padding: 0.5rem 0 2.5rem;
-}
-.detail-body {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  gap: 2.5rem;
-  max-width: 980px;
-}
-
-.detail-block + .detail-block { margin-top: 1.5rem; }
-.detail-block .lbl {
-  font-family: var(--mono);
-  font-size: 9.5px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 0.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-.detail-block .lbl::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--accent-soft);
-}
-.detail-block .txt {
-  font-size: 14.5px;
-  font-weight: 400;
-  line-height: 1.7;
-  color: var(--ink-mid);
-}
-.detail-block .txt strong { font-weight: 500; color: var(--ink); }
-.detail-block ul { list-style: none; padding: 0; }
-.detail-block ul li {
-  position: relative;
-  padding-left: 22px;
-  font-size: 14.5px;
-  line-height: 1.7;
-  color: var(--ink-mid);
-  margin-bottom: 4px;
-}
-.detail-block ul li::before {
-  content: '→';
-  position: absolute;
-  left: 0;
-  color: var(--accent);
-  font-family: var(--mono);
-}
-.detail-block ul li strong { font-weight: 500; color: var(--ink); }
-
-.detail-aside {
-  border-left: 1px solid var(--sand-dark);
-  padding-left: 1.5rem;
-  align-self: start;
-}
-
-/* ════════════════════════════════════════════ */
-/*  IN PLANUNG                                  */
-/* ════════════════════════════════════════════ */
-.upcoming {
-  margin-top: 3rem;
-  padding: 1.75rem 2rem;
-  background: var(--cream);
-  border: 1px dashed var(--sand-darker);
-  border-radius: 4px;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: 2rem;
-  align-items: center;
-}
-.upcoming-num {
-  font-family: var(--serif);
-  font-size: 2.2rem;
-  color: var(--ink-faint);
-  line-height: 1;
-}
-.upcoming-title {
-  font-family: var(--serif);
-  font-size: 1.25rem;
-  line-height: 1.2;
-  margin-bottom: 4px;
-}
-.upcoming-desc {
-  font-size: 13px;
-  color: var(--ink-light);
-  line-height: 1.5;
-}
-.upcoming-badge {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-mid);
-  padding: 6px 12px;
-  background: var(--paper);
-  border-radius: 100px;
-  border: 1px solid var(--sand-dark);
-  white-space: nowrap;
-}
-
-/* ════════════════════════════════════════════ */
-/*  CONTACT                                     */
-/* ════════════════════════════════════════════ */
-.contact {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: clamp(4rem, 10vh, 7rem) var(--shell-pad) 2rem;
-  border-top: 1px solid var(--sand-dark);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-}
-.contact-statement {
-  font-family: var(--serif);
-  font-size: clamp(2rem, 4.5vw, 3.2rem);
-  font-weight: 400;
-  line-height: 1.08;
-  letter-spacing: -0.015em;
-}
-.contact-statement em {
-  font-style: italic;
-  color: var(--accent);
-}
-.contact-side {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  align-self: end;
-}
-.contact-text {
-  font-size: 14.5px;
-  line-height: 1.65;
-  color: var(--ink-mid);
-  max-width: 42ch;
-}
-.contact-links {
-  display: flex;
-  flex-direction: column;
-  border-top: 1px solid var(--sand-dark);
-}
-.contact-link {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: 1rem;
-  padding: 1.1rem 0;
-  border-bottom: 1px solid var(--sand-dark);
-  font-size: 15px;
-  color: var(--ink);
-  text-decoration: none;
-  transition: color 0.2s, padding-left 0.25s;
-}
-.contact-link:hover { color: var(--accent); padding-left: 8px; }
-.contact-link .ico {
-  width: 18px; height: 18px;
-  stroke: currentColor;
-  fill: none;
-  stroke-width: 1.5;
-}
-.contact-link .label {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-light);
-}
-.contact-link .arr {
-  width: 16px; height: 16px;
-  opacity: 0;
-  transform: translateX(-6px);
-  transition: opacity 0.25s, transform 0.25s;
-  stroke: currentColor; fill: none; stroke-width: 1.5;
-}
-.contact-link:hover .arr { opacity: 1; transform: translateX(0); }
-
-/* Footer marquee */
-.footer {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem var(--shell-pad) 3rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: var(--mono);
-  font-size: 10.5px;
-  color: var(--ink-light);
-  letter-spacing: 0.06em;
-  border-top: 1px solid var(--sand-dark);
-}
-.footer .mono-name { color: var(--ink-mid); }
-
-.bigword {
-  font-family: var(--serif);
-  font-size: clamp(8rem, 28vw, 22rem);
-  line-height: 0.85;
-  letter-spacing: -0.05em;
-  color: var(--ink);
-  padding: 1rem var(--shell-pad) 2rem;
-  white-space: nowrap;
-  overflow: hidden;
-  user-select: none;
-  max-width: 1280px;
-  margin: 0 auto;
-}
-.bigword em {
-  font-style: italic;
-  color: var(--accent);
-}
-
-/* ════════════════════════════════════════════ */
-/*  Language toggle                            */
-/* ════════════════════════════════════════════ */
-.lang-toggle {
-  background: none;
-  border: 1px solid var(--sand-darker);
-  border-radius: 100px;
-  padding: 4px 12px;
-  font-family: var(--mono);
-  font-size: 10.5px;
-  letter-spacing: 0.06em;
-  color: var(--ink-mid);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  transition: border-color 0.2s;
-}
-.lang-toggle:hover { border-color: var(--accent); }
-.lang-sep { color: var(--ink-faint); }
-.lang-opt { transition: color 0.2s, font-weight 0.2s; }
-.lang-opt.active { color: var(--accent); font-weight: 600; }
-
-/* ════════════════════════════════════════════ */
-/*  Reveal animation                            */
-/* ════════════════════════════════════════════ */
-.reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.7s ease, transform 0.7s ease; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-
-/* ════════════════════════════════════════════ */
-/*  Responsive                                  */
-/* ════════════════════════════════════════════ */
-@media (max-width: 900px) {
-  .hero-grid { grid-template-columns: 1fr; }
-  .hero-meta { border-left: 0; border-top: 1px solid var(--sand-dark); padding: 1.5rem 0 0; padding-left: 0; }
-  .arc-steps { grid-template-columns: repeat(2, 1fr); }
-  .kpi-inner { grid-template-columns: repeat(2, 1fr); gap: 2rem 1rem; }
-  .kpi + .kpi:nth-child(3) { border-left: 1px solid var(--sand-dark); }
-  .kpi:nth-child(3) { border-top: 1px solid var(--sand-dark); padding-top: 2rem; }
-  .kpi:nth-child(4) { border-top: 1px solid var(--sand-dark); padding-top: 2rem; }
-  .detail-body { grid-template-columns: 1fr; gap: 1.75rem; }
-  .detail-aside { border-left: 0; border-top: 1px solid var(--sand-dark); padding-left: 0; padding-top: 1.25rem; }
-  .contact { grid-template-columns: 1fr; gap: 2rem; }
-  .masthead .left .desktop-only, .masthead .right .desktop-only { display: none; }
-  .section-head { grid-template-columns: 1fr; }
-  .project-row { grid-template-columns: 48px 1fr 40px; }
-  .project-num { font-size: 1.6rem; }
-  .project-meta { display: none; }
-  .detail-grid { grid-template-columns: 1fr; }
-  .upcoming { grid-template-columns: auto 1fr; }
-  .upcoming-badge { display: none; }
-}
-@media (max-width: 560px) {
-  .arc-steps { grid-template-columns: 1fr; }
-  .kpi-inner { grid-template-columns: 1fr; }
-  .kpi + .kpi { border-left: 0; border-top: 1px solid var(--sand-dark); padding-top: 2rem; }
-  .kpi:first-child { padding-left: 0; }
-  .kpi { padding-left: 0; padding-right: 0; }
-  .masthead-inner { grid-template-columns: 1fr auto; }
-  .masthead .center { display: none; }
-}
-</style>
 </head>
 <body>
 
@@ -808,7 +43,7 @@ body::before {
   </header>
 
   <!-- ═══ Hero ═══ -->
-  <section class="hero" data-screen-label="01 Hero">
+  <section class="hero">
     <div class="hero-grid">
       <div>
         <div class="hero-kicker" data-de="Projektportfolio · 2023 — 2026" data-en="Project Portfolio · 2023 — 2026">Projektportfolio · 2023 — 2026</div>
@@ -828,20 +63,20 @@ body::before {
       <aside class="hero-meta">
         <dl>
           <div>
-            <dt>Aktuell</dt>
-            <dd>Assistenz der Bereichsleitung Schuhe &amp; Möbel · <em>Office Manager</em></dd>
+            <dt data-de="Aktuell" data-en="Current">Aktuell</dt>
+            <dd data-de="Assistenz der Bereichsleitung Schuhe &amp; Möbel · <em>Office Manager</em>" data-en="Assistant to Head of Shoes &amp; Furniture · <em>Office Manager</em>">Assistenz der Bereichsleitung Schuhe &amp; Möbel · <em>Office Manager</em></dd>
           </div>
           <div>
-            <dt>Schwerpunkt</dt>
-            <dd>Prozessoptimierung · Datenbanken · UI/UX</dd>
+            <dt data-de="Schwerpunkt" data-en="Focus">Schwerpunkt</dt>
+            <dd data-de="Prozessoptimierung · Datenbanken · UI/UX" data-en="Process Optimisation · Databases · UI/UX">Prozessoptimierung · Datenbanken · UI/UX</dd>
           </div>
           <div>
-            <dt>Sprachen</dt>
+            <dt data-de="Sprachen" data-en="Languages">Sprachen</dt>
             <dd>Deutsch · English · Français · Arabisch</dd>
           </div>
           <div>
-            <dt>Anfragen</dt>
-            <dd>Projektmgmt · Koordination · Operations</dd>
+            <dt data-de="Anfragen" data-en="Seeking">Anfragen</dt>
+            <dd data-de="Projektmgmt · Koordination · Operations" data-en="Project Mgmt · Coordination · Operations">Projektmgmt · Koordination · Operations</dd>
           </div>
         </dl>
       </aside>
@@ -849,416 +84,272 @@ body::before {
   </section>
 
   <!-- ═══ Career Arc ═══ -->
-  <section class="arc" data-screen-label="02 Werdegang" aria-label="Werdegang">
-    <div class="hero-kicker">Werdegang · seit 2023</div>
+  <section class="arc" aria-label="Werdegang">
+    <div class="hero-kicker" data-de="Werdegang · seit 2023" data-en="Career Path · since 2023">Werdegang · seit 2023</div>
     <div class="arc-rail"></div>
     <div class="arc-steps">
       <div class="arc-step">
-        <div class="arc-year">2023 — 2024</div>
-        <div class="arc-role">Produktion &amp; Reparaturabteilung</div>
-        <div class="arc-detail">Fertigung, Prozessverständnis &amp; erste Eigeninitiative — Lager-Neustrukturierung</div>
+        <div class="arc-year" data-de="2023 — 2024" data-en="2023 — 2024">2023 — 2024</div>
+        <div class="arc-role" data-de="Produktion &amp; Reparaturabteilung" data-en="Production &amp; Repair Department">Produktion &amp; Reparaturabteilung</div>
+        <div class="arc-detail" data-de="Fertigung, Prozessverständnis &amp; erste Eigeninitiative — Lager-Neustrukturierung" data-en="Manufacturing, process understanding &amp; first initiative — warehouse restructuring">Fertigung, Prozessverständnis &amp; erste Eigeninitiative — Lager-Neustrukturierung</div>
       </div>
       <div class="arc-step">
-        <div class="arc-year">ab Mai 2025</div>
-        <div class="arc-role">Kanban &amp; Materialmanagement</div>
-        <div class="arc-detail">Aufbau &amp; Optimierung des unternehmensweiten Kanban-Systems</div>
+        <div class="arc-year" data-de="ab Mai 2025" data-en="from May 2025">ab Mai 2025</div>
+        <div class="arc-role" data-de="Kanban &amp; Materialmanagement" data-en="Kanban &amp; Material Management">Kanban &amp; Materialmanagement</div>
+        <div class="arc-detail" data-de="Aufbau &amp; Optimierung des unternehmensweiten Kanban-Systems" data-en="Building &amp; optimising the company-wide Kanban system">Aufbau &amp; Optimierung des unternehmensweiten Kanban-Systems</div>
       </div>
       <div class="arc-step">
-        <div class="arc-year">ab Okt 2025</div>
-        <div class="arc-role">Logistik-Unterstützung</div>
-        <div class="arc-detail">Abteilungsübergreifende Koordination</div>
+        <div class="arc-year" data-de="ab Okt 2025" data-en="from Oct 2025">ab Okt 2025</div>
+        <div class="arc-role" data-de="Logistik-Unterstützung" data-en="Logistics Support">Logistik-Unterstützung</div>
+        <div class="arc-detail" data-de="Abteilungsübergreifende Koordination" data-en="Cross-department coordination">Abteilungsübergreifende Koordination</div>
       </div>
       <div class="arc-step current">
         <div class="arc-year">Q4 / 2025 —</div>
-        <div class="arc-role">Assistenz der Bereichsleitung Schuhe &amp; Möbel</div>
-        <div class="arc-detail">Eigenständige Projektverantwortung — ab Q1/2026 inkl. Möbelabteilung</div>
+        <div class="arc-role" data-de="Assistenz der Bereichsleitung Schuhe &amp; Möbel" data-en="Assistant to Head of Shoes &amp; Furniture">Assistenz der Bereichsleitung Schuhe &amp; Möbel</div>
+        <div class="arc-detail" data-de="Eigenständige Projektverantwortung — ab Q1/2026 inkl. Möbelabteilung" data-en="Independent project ownership — furniture dept. added Q1/2026">Eigenständige Projektverantwortung — ab Q1/2026 inkl. Möbelabteilung</div>
       </div>
     </div>
   </section>
 
   <!-- ═══ KPI Band ═══ -->
-  <section class="kpi-band" data-screen-label="03 Wirkung" aria-label="Wirkung in Zahlen">
+  <section class="kpi-band" aria-label="Wirkung in Zahlen">
     <div class="kpi-inner">
       <div class="kpi">
         <div class="kpi-num">40<span class="unit">+</span></div>
-        <div class="kpi-label">Filialen mit neuem <strong>Konfigurator</strong> ausgestattet</div>
+        <div class="kpi-label" data-de="Filialen mit neuem <strong>Konfigurator</strong> ausgestattet" data-en="Stores equipped with new <strong>configurator</strong>">Filialen mit neuem <strong>Konfigurator</strong> ausgestattet</div>
       </div>
       <div class="kpi">
         <div class="kpi-num">90<span class="unit">%</span></div>
-        <div class="kpi-label">Zeitersparnis bei <strong>Kanban-Kartenerstellung</strong></div>
+        <div class="kpi-label" data-de="Zeitersparnis bei <strong>Kanban-Kartenerstellung</strong>" data-en="Time saved on <strong>Kanban card creation</strong>">Zeitersparnis bei <strong>Kanban-Kartenerstellung</strong></div>
       </div>
       <div class="kpi">
-        <div class="kpi-num">06</div>
-        <div class="kpi-label">Abgeschlossene <strong>Projekte</strong> in 12 Monaten</div>
+        <div class="kpi-num">07</div>
+        <div class="kpi-label" data-de="Abgeschlossene <strong>Projekte</strong> in 12 Monaten" data-en="Completed <strong>projects</strong> in 12 months">Abgeschlossene <strong>Projekte</strong> in 12 Monaten</div>
       </div>
       <div class="kpi">
         <div class="kpi-num">01</div>
-        <div class="kpi-label">Systemweites <strong>Datenqualitätsproblem</strong> identifiziert</div>
+        <div class="kpi-label" data-de="Systemweites <strong>Datenqualitätsproblem</strong> identifiziert" data-en="System-wide <strong>data quality issue</strong> identified">Systemweites <strong>Datenqualitätsproblem</strong> identifiziert</div>
       </div>
     </div>
   </section>
 
   <!-- ═══ Projects ═══ -->
-  <section class="section" id="projekte" data-screen-label="04 Projekte">
+  <section class="section" id="projekte">
     <div class="section-head">
       <div>
-        <div class="section-eyebrow">Auswahl 2023 — 2026</div>
-        <h2 class="section-title">Vom Problem<br>zur <em>Lösung.</em></h2>
+        <div class="section-eyebrow" data-de="Auswahl 2023 — 2026" data-en="Selected Work 2023 — 2026">Auswahl 2023 — 2026</div>
+        <h2 class="section-title" data-de="Vom Problem<br>zur <em>Lösung.</em>" data-en="From Problem<br>to <em>Solution.</em>">Vom Problem<br>zur <em>Lösung.</em></h2>
       </div>
-      <div class="section-count">— 06 PROJEKTE / 01 IN PLANUNG —</div>
+      <div class="section-count" data-de="— 07 PROJEKTE —" data-en="— 07 PROJECTS —">— 07 PROJEKTE —</div>
     </div>
 
     <div class="projects">
 
       <!-- ── 01 ── -->
-      <article class="project" data-screen-label="Projekt 01 Sonderanfertigung">
-        <div class="project-row" onclick="toggleCard(this.parentElement)">
+      <article class="project">
+        <a class="project-row" href="projects/sonderanfertigung.html">
           <div class="project-num">01</div>
           <div class="project-body">
-            <h3 class="project-title">Sonderanfertigungsformular</h3>
-            <p class="project-subtitle">Ein webbasierter Schuhkonfigurator mit Live-Datenbankanbindung, der den manuellen Bestellprozess für Sonderanfertigungen in über 40 Filialen ablöst.</p>
+            <h3 class="project-title" data-de="Sonderanfertigungsformular" data-en="Custom Shoe Order Form">Sonderanfertigungsformular</h3>
+            <p class="project-subtitle" data-de="Ein webbasierter Schuhkonfigurator mit Live-Datenbankanbindung, der den manuellen Bestellprozess für Sonderanfertigungen in über 40 Filialen ablöst." data-en="A web-based shoe configurator with live database integration, replacing the manual custom order process across 40+ stores.">Ein webbasierter Schuhkonfigurator mit Live-Datenbankanbindung, der den manuellen Bestellprozess für Sonderanfertigungen in über 40 Filialen ablöst.</p>
             <div class="tag-row">
-              <span class="tag impact">40+ Filialen</span>
-              <span class="tag">Prozessoptimierung</span>
+              <span class="tag impact" data-de="40+ Filialen" data-en="40+ Stores">40+ Filialen</span>
+              <span class="tag" data-de="Prozessoptimierung" data-en="Process Optimisation">Prozessoptimierung</span>
               <span class="tag divider">·</span>
-              <span class="tag">Datenbankintegration</span>
+              <span class="tag" data-de="Datenbankintegration" data-en="Database Integration">Datenbankintegration</span>
               <span class="tag divider">·</span>
               <span class="tag">UI/UX Design</span>
             </div>
           </div>
           <div class="project-meta">
-            <div><b>Rolle</b>End-to-End</div>
+            <div><b data-de="Rolle" data-en="Role">Rolle</b>End-to-End</div>
             <div><b>Stack</b>DB · Web</div>
           </div>
-          <button class="project-toggle" aria-label="Details anzeigen">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
-          </button>
-        </div>
-        <div class="project-detail"><div class="clip"><div class="detail-grid">
-          <div></div>
-          <div class="detail-body">
-            <div>
-              <div class="detail-block">
-                <div class="lbl">Ausgangslage</div>
-                <div class="txt">Sonderanfertigungen wurden ursprünglich über ein <strong>handschriftlich ausgefülltes PDF-Formular</strong> abgewickelt — ausschließlich durch den Bereichsleiter oder die Zentrale. Ein Google Sheet wurde als Zwischenlösung eingeführt, das bereits Kompatibilitätsregeln und Preisberechnung automatisierte, aber aufgrund von Lizenz- und Zugangsbeschränkungen nicht an die über 40 Filialen ausgerollt werden konnte.</div>
-              </div>
-              <div class="detail-block">
-                <div class="lbl">Vorgehen</div>
-                <div class="txt">Analyse des bestehenden Formulars und dessen Logik (Kompatibilitätsregeln, Preisberechnung, abhängige Auswahllisten). Entwurf eines relationalen Datenmodells. Aufbau eines funktionalen Prototyps mit iterativem Feedback. Anbindung an die Warenwirtschafts-Datenbank für Live-Daten zu Modellen, Materialien und Lagerbeständen. Integration in die bestehende interne Plattform.</div>
-              </div>
-              <div class="detail-block">
-                <div class="lbl">Ergebnis</div>
-                <ul>
-                  <li>Filialmitarbeiter können <strong>eigenständig Sonderanfertigungen</strong> erfassen</li>
-                  <li>Komplexe Kompatibilitätsregeln verhindern ungültige Konfigurationen</li>
-                  <li>Live-Materialverfügbarkeit aus dem Warenwirtschaftssystem</li>
-                  <li>Automatische Preisberechnung und Auftragsübersicht</li>
-                  <li>Phasenweise Einführung mit Schulungsdokumentation</li>
-                </ul>
-              </div>
-            </div>
-            <aside class="detail-aside">
-              <div class="detail-block">
-                <div class="lbl">Meine Rolle</div>
-                <div class="txt">Komplette Eigenverantwortung: Anforderungsanalyse, Datenmodellierung, UI-Design, Datenbankintegration, Deployment-Planung, Erstellung der Anleitungen und Koordination der Einführung.</div>
-              </div>
-              <div class="detail-block">
-                <div class="lbl">Wirkung</div>
-                <div class="txt"><strong>40+ Filialen</strong> erhalten erstmals direkten, autonomen Zugriff auf den Sonderanfertigungs-Workflow.</div>
-              </div>
-            </aside>
+          <div class="project-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </div>
-        </div></div></div>
+        </a>
       </article>
 
       <!-- ── 02 ── -->
-      <article class="project" data-screen-label="Projekt 02 Produktionsplaner">
-        <div class="project-row" onclick="toggleCard(this.parentElement)">
+      <article class="project">
+        <a class="project-row" href="projects/produktionsplaner.html">
           <div class="project-num">02</div>
           <div class="project-body">
-            <h3 class="project-title">Produktionsplaner</h3>
-            <p class="project-subtitle">Ein datenbankgestütztes Planungstool, das aktuelle Lagerbestände mit SKU-Daten verknüpft, um die Machbarkeit geplanter Produktionsläufe zu bewerten und Engpassmaterialien zu identifizieren.</p>
+            <h3 class="project-title" data-de="Produktionsplaner" data-en="Production Planner">Produktionsplaner</h3>
+            <p class="project-subtitle" data-de="Ein datenbankgestütztes Planungstool, das aktuelle Lagerbestände mit SKU-Daten verknüpft, um die Machbarkeit geplanter Produktionsläufe zu bewerten und Engpassmaterialien zu identifizieren." data-en="A database-driven planning tool that cross-references current stock with BOM data to assess production feasibility and identify bottleneck materials.">Ein datenbankgestütztes Planungstool, das aktuelle Lagerbestände mit SKU-Daten verknüpft, um die Machbarkeit geplanter Produktionsläufe zu bewerten und Engpassmaterialien zu identifizieren.</p>
             <div class="tag-row">
-              <span class="tag impact">Entscheidungsunterstützung</span>
-              <span class="tag">Produktionsplanung</span>
+              <span class="tag impact" data-de="Entscheidungsunterstützung" data-en="Decision Support">Entscheidungsunterstützung</span>
+              <span class="tag" data-de="Produktionsplanung" data-en="Production Planning">Produktionsplanung</span>
               <span class="tag divider">·</span>
-              <span class="tag">Datenbankintegration</span>
+              <span class="tag" data-de="Datenbankintegration" data-en="Database Integration">Datenbankintegration</span>
               <span class="tag divider">·</span>
-              <span class="tag">Engpassanalyse</span>
+              <span class="tag" data-de="Engpassanalyse" data-en="Bottleneck Analysis">Engpassanalyse</span>
             </div>
           </div>
           <div class="project-meta">
-            <div><b>Rolle</b>End-to-End</div>
+            <div><b data-de="Rolle" data-en="Role">Rolle</b>End-to-End</div>
             <div><b>Stack</b>DB · BOM</div>
           </div>
-          <button class="project-toggle" aria-label="Details anzeigen">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
-          </button>
-        </div>
-        <div class="project-detail"><div class="clip"><div class="detail-grid">
-          <div></div>
-          <div class="detail-body">
-            <div>
-              <div class="detail-block">
-                <div class="lbl">Ausgangslage</div>
-                <div class="txt">Die Produktionsplanung erforderte manuelle Prüfung von Materialverfügbarkeiten über verschiedene Systeme hinweg. Engpässe wurden oft erst während der Produktion sichtbar.</div>
-              </div>
-              <div class="detail-block">
-                <div class="lbl">Lösung</div>
-                <div class="txt">Ein Tool, das direkt mit der Warenwirtschafts-Datenbank verbunden ist. Nutzer geben geplante Schuhmodelle ein, das System gleicht die <strong>Stücklisten (BOM)</strong> mit aktuellen Lagerbeständen ab und zeigt sofort, welche Materialien den Engpass bilden.</div>
-              </div>
-            </div>
-            <aside class="detail-aside">
-              <div class="detail-block">
-                <div class="lbl">Meine Rolle</div>
-                <div class="txt">Konzept, Datenbankanbindung, Entwicklung und Einführung — vollständig eigenverantwortlich umgesetzt.</div>
-              </div>
-            </aside>
+          <div class="project-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </div>
-        </div></div></div>
+        </a>
       </article>
 
       <!-- ── 03 ── -->
-      <article class="project" data-screen-label="Projekt 03 Stücklisten-Analyse">
-        <div class="project-row" onclick="toggleCard(this.parentElement)">
+      <article class="project">
+        <a class="project-row" href="projects/stucklisten-analyse.html">
           <div class="project-num">03</div>
           <div class="project-body">
-            <h3 class="project-title">Stücklisten-Analyse — <em style="font-style:italic;color:var(--accent)">Konfigurierbare Möbel</em></h3>
-            <p class="project-subtitle">Systematische Analyse der Stücklisten für konfigurierbare Möbel mittels Datenbankauswertung, die ein wiederkehrendes Datenqualitätsproblem aufgedeckt hat.</p>
+            <h3 class="project-title" data-de="Stücklisten-Analyse — Konfigurierbare Möbel" data-en="BOM Analysis — Configurable Furniture">Stücklisten-Analyse — <em style="font-style:italic;color:var(--accent)">Konfigurierbare Möbel</em></h3>
+            <p class="project-subtitle" data-de="Systematische Analyse der Stücklisten für konfigurierbare Möbel mittels Datenbankauswertung, die ein wiederkehrendes Datenqualitätsproblem aufgedeckt hat." data-en="Systematic analysis of bills of materials for configurable furniture via database queries, uncovering a recurring data quality issue.">Systematische Analyse der Stücklisten für konfigurierbare Möbel mittels Datenbankauswertung, die ein wiederkehrendes Datenqualitätsproblem aufgedeckt hat.</p>
             <div class="tag-row">
-              <span class="tag impact">Systemproblem identifiziert</span>
-              <span class="tag">Datenanalyse</span>
+              <span class="tag impact" data-de="Systemproblem identifiziert" data-en="Issue Identified">Systemproblem identifiziert</span>
+              <span class="tag" data-de="Datenanalyse" data-en="Data Analysis">Datenanalyse</span>
               <span class="tag divider">·</span>
-              <span class="tag">Qualitätssicherung</span>
+              <span class="tag" data-de="Qualitätssicherung" data-en="Quality Assurance">Qualitätssicherung</span>
               <span class="tag divider">·</span>
-              <span class="tag">Abteilungsübergreifend</span>
+              <span class="tag" data-de="Abteilungsübergreifend" data-en="Cross-Department">Abteilungsübergreifend</span>
             </div>
           </div>
           <div class="project-meta">
-            <div><b>Rolle</b>Eigeninitiative</div>
+            <div><b data-de="Rolle" data-en="Role">Rolle</b><span data-de="Eigeninitiative" data-en="Self-Initiated">Eigeninitiative</span></div>
             <div><b>Stack</b>SQL · Reporting</div>
           </div>
-          <button class="project-toggle" aria-label="Details anzeigen">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
-          </button>
-        </div>
-        <div class="project-detail"><div class="clip"><div class="detail-grid">
-          <div></div>
-          <div class="detail-body">
-            <div>
-              <div class="detail-block">
-                <div class="lbl">Ausgangslage</div>
-                <div class="txt">Konfigurierbare Möbel haben komplexe Stücklisten im Warenwirtschaftssystem. Fehler in diesen Daten führen zu Problemen in Produktion und Bestellung, werden aber selten systematisch geprüft.</div>
-              </div>
-              <div class="detail-block">
-                <div class="lbl">Vorgehen</div>
-                <div class="txt">Über einen Lesezugang zur Datenbank habe ich die Stücklisten der konfigurierbaren Möbel systematisch ausgewertet und dabei ein <strong>wiederkehrendes Muster fehlerhafter Einträge</strong> identifiziert, das in der normalen Arbeit nicht sichtbar war.</div>
-              </div>
-              <div class="detail-block">
-                <div class="lbl">Ergebnis</div>
-                <div class="txt">Die Analyse samt Dokumentation wurde an die zuständige Fachabteilung übergeben, die das Problem nun gezielt beheben kann. Der Ansatz zeigt, wie Datenbankzugang <strong>proaktiv zur Qualitätssicherung</strong> eingesetzt werden kann.</div>
-              </div>
-            </div>
-            <aside class="detail-aside">
-              <div class="detail-block">
-                <div class="lbl">Meine Rolle</div>
-                <div class="txt">Eigeninitiative: Analyse konzipiert, Datenbank abgefragt, Muster erkannt, Ergebnisse aufbereitet und an die richtige Stelle weitergeleitet.</div>
-              </div>
-            </aside>
+          <div class="project-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </div>
-        </div></div></div>
+        </a>
       </article>
 
       <!-- ── 04 ── -->
-      <article class="project" data-screen-label="Projekt 04 Reparaturservice">
-        <div class="project-row" onclick="toggleCard(this.parentElement)">
+      <article class="project">
+        <a class="project-row" href="projects/reparaturservice.html">
           <div class="project-num">04</div>
           <div class="project-body">
-            <h3 class="project-title">Reparaturservice — Webseiten</h3>
-            <p class="project-subtitle">Zwei kundenorientierte Webseiten: eine interaktive Übersicht verfügbarer Reparaturen nach Schuhmodell und eine Galerie mit Beispielen reparierter Schuhe samt Einsendeprozess.</p>
+            <h3 class="project-title" data-de="Reparaturservice — Webseiten" data-en="Repair Service — Web Pages">Reparaturservice — Webseiten</h3>
+            <p class="project-subtitle" data-de="Zwei kundenorientierte Webseiten: eine interaktive Übersicht verfügbarer Reparaturen nach Schuhmodell und eine Galerie mit Beispielen reparierter Schuhe samt Einsendeprozess." data-en="Two customer-facing web pages: an interactive overview of available repairs by shoe model, and a gallery of repaired shoes with the send-in process explained.">Zwei kundenorientierte Webseiten: eine interaktive Übersicht verfügbarer Reparaturen nach Schuhmodell und eine Galerie mit Beispielen reparierter Schuhe samt Einsendeprozess.</p>
             <div class="tag-row">
-              <span class="tag impact">Kundenorientiert</span>
-              <span class="tag">Kundenservice</span>
+              <span class="tag impact" data-de="Kundenorientiert" data-en="Customer-Facing">Kundenorientiert</span>
+              <span class="tag" data-de="Kundenservice" data-en="Customer Service">Kundenservice</span>
               <span class="tag divider">·</span>
-              <span class="tag">Webdesign</span>
+              <span class="tag" data-de="Webdesign" data-en="Web Design">Webdesign</span>
               <span class="tag divider">·</span>
               <span class="tag">Content</span>
             </div>
           </div>
           <div class="project-meta">
-            <div><b>Rolle</b>End-to-End</div>
-            <div><b>Format</b>2 Webseiten</div>
+            <div><b data-de="Rolle" data-en="Role">Rolle</b>End-to-End</div>
+            <div><b data-de="Format" data-en="Format">Format</b><span data-de="2 Webseiten" data-en="2 Web Pages">2 Webseiten</span></div>
           </div>
-          <button class="project-toggle" aria-label="Details anzeigen">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
-          </button>
-        </div>
-        <div class="project-detail"><div class="clip"><div class="detail-grid">
-          <div></div>
-          <div class="detail-body">
-            <div>
-              <div class="detail-block">
-                <div class="lbl">Ausgangslage</div>
-                <div class="txt">Kunden hatten keine einfache Möglichkeit herauszufinden, welche Reparaturen für ihr Schuhmodell verfügbar sind. Die Vielfalt an Modellen machte eine übersichtliche Darstellung notwendig.</div>
-              </div>
-              <div class="detail-block">
-                <div class="lbl">Lösung</div>
-                <div class="txt">Eine interaktive Informationsseite, die Kunden durch die Modellvielfalt navigiert und verfügbare Reparaturoptionen anzeigt. Ergänzt durch eine Galerie mit <strong>Vorher/Nachher-Beispielen</strong> und einer klaren Erklärung des Einsendeprozesses.</div>
-              </div>
-            </div>
-            <aside class="detail-aside">
-              <div class="detail-block">
-                <div class="lbl">Meine Rolle</div>
-                <div class="txt">Konzeption, Informationsarchitektur, Design und Umsetzung beider Seiten.</div>
-              </div>
-            </aside>
+          <div class="project-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </div>
-        </div></div></div>
+        </a>
       </article>
 
       <!-- ── 05 ── -->
-      <article class="project" data-screen-label="Projekt 05 Kundeninformation">
-        <div class="project-row" onclick="toggleCard(this.parentElement)">
+      <article class="project">
+        <a class="project-row" href="projects/kundeninformation.html">
           <div class="project-num">05</div>
           <div class="project-body">
-            <h3 class="project-title">Sonderanfertigung — Kundeninformation</h3>
-            <p class="project-subtitle">Eine öffentliche Webseite, die den Sonderanfertigungs-Service mit visuellen Beispielen präsentiert und Kunden die verfügbaren Optionen vermittelt.</p>
+            <h3 class="project-title" data-de="Sonderanfertigung — Kundeninformation" data-en="Custom Shoes — Customer Information">Sonderanfertigung — Kundeninformation</h3>
+            <p class="project-subtitle" data-de="Eine öffentliche Webseite, die den Sonderanfertigungs-Service mit visuellen Beispielen präsentiert und Kunden die verfügbaren Optionen vermittelt." data-en="A public web page showcasing the custom shoe service with visual examples, helping customers understand the available options.">Eine öffentliche Webseite, die den Sonderanfertigungs-Service mit visuellen Beispielen präsentiert und Kunden die verfügbaren Optionen vermittelt.</p>
             <div class="tag-row">
-              <span class="tag impact">Kundenkommunikation</span>
+              <span class="tag impact" data-de="Kundenkommunikation" data-en="Customer Comms">Kundenkommunikation</span>
               <span class="tag">Marketing</span>
               <span class="tag divider">·</span>
-              <span class="tag">Webdesign</span>
+              <span class="tag" data-de="Webdesign" data-en="Web Design">Webdesign</span>
             </div>
           </div>
           <div class="project-meta">
-            <div><b>Rolle</b>End-to-End</div>
-            <div><b>Format</b>Public Site</div>
+            <div><b data-de="Rolle" data-en="Role">Rolle</b>End-to-End</div>
+            <div><b data-de="Format" data-en="Format">Format</b>Public Site</div>
           </div>
-          <button class="project-toggle" aria-label="Details anzeigen">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
-          </button>
-        </div>
-        <div class="project-detail"><div class="clip"><div class="detail-grid">
-          <div></div>
-          <div class="detail-body">
-            <div>
-              <div class="detail-block">
-                <div class="lbl">Ausgangslage</div>
-                <div class="txt">Der Sonderanfertigungs-Service war für Kunden nicht transparent dargestellt. Die Möglichkeiten (Lederfarben, Sohlen, individuelle Anpassungen) waren nur intern bekannt.</div>
-              </div>
-              <div class="detail-block">
-                <div class="lbl">Lösung</div>
-                <div class="txt">Eine visuell ansprechende Webseite mit konkreten Beispielen kundenspezifischer Schuhe, die die <strong>Bandbreite der Individualisierungsmöglichkeiten</strong> zeigt und den Service greifbar macht.</div>
-              </div>
-            </div>
-            <aside class="detail-aside">
-              <div class="detail-block">
-                <div class="lbl">Meine Rolle</div>
-                <div class="txt">Konzept, Content-Auswahl, Design und Umsetzung.</div>
-              </div>
-            </aside>
+          <div class="project-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </div>
-        </div></div></div>
+        </a>
       </article>
 
       <!-- ── 06 ── -->
-      <article class="project" data-screen-label="Projekt 06 Kanban-System">
-        <div class="project-row" onclick="toggleCard(this.parentElement)">
+      <article class="project">
+        <a class="project-row" href="projects/kanban-system.html">
           <div class="project-num">06</div>
           <div class="project-body">
-            <h3 class="project-title">Kanban-System — Aufbau &amp; Optimierung</h3>
-            <p class="project-subtitle">Von der Neuordnung eines ganzen Reparaturlagers über die Einführung von Kanban-Karten bis hin zu einem automatisierten Mastersheet, das die Kartenerstellung um 90% beschleunigt.</p>
+            <h3 class="project-title" data-de="Kanban-System — Aufbau &amp; Optimierung" data-en="Kanban System — Build &amp; Optimisation">Kanban-System — Aufbau &amp; Optimierung</h3>
+            <p class="project-subtitle" data-de="Von der Neuordnung eines ganzen Reparaturlagers über die Einführung von Kanban-Karten bis hin zu einem automatisierten Mastersheet, das die Kartenerstellung um 90% beschleunigt." data-en="From restructuring an entire repair warehouse to building Kanban cards to an automated mastersheet that sped up card creation by 90%.">Von der Neuordnung eines ganzen Reparaturlagers über die Einführung von Kanban-Karten bis hin zu einem automatisierten Mastersheet, das die Kartenerstellung um 90% beschleunigt.</p>
             <div class="tag-row">
-              <span class="tag impact">90% Zeitersparnis</span>
+              <span class="tag impact" data-de="90% Zeitersparnis" data-en="90% Time Saved">90% Zeitersparnis</span>
               <span class="tag">Lean / Kanban</span>
               <span class="tag divider">·</span>
-              <span class="tag">Lagermanagement</span>
+              <span class="tag" data-de="Lagermanagement" data-en="Warehouse Mgmt">Lagermanagement</span>
               <span class="tag divider">·</span>
-              <span class="tag">Prozessoptimierung</span>
+              <span class="tag" data-de="Prozessoptimierung" data-en="Process Optimisation">Prozessoptimierung</span>
             </div>
           </div>
           <div class="project-meta">
-            <div><b>Rolle</b>Hauptverantw.</div>
-            <div><b>Umfang</b>3 Phasen</div>
+            <div><b data-de="Rolle" data-en="Role">Rolle</b><span data-de="Hauptverantw." data-en="Lead">Hauptverantw.</span></div>
+            <div><b data-de="Umfang" data-en="Scope">Umfang</b><span data-de="3 Phasen" data-en="3 Phases">3 Phasen</span></div>
           </div>
-          <button class="project-toggle" aria-label="Details anzeigen">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
-          </button>
-        </div>
-        <div class="project-detail"><div class="clip"><div class="detail-grid">
-          <div></div>
-          <div class="detail-body">
-            <div>
-              <div class="detail-block">
-                <div class="lbl">Phase 1 · Reparaturlager</div>
-                <div class="txt">Als Produktionsmitarbeiter in der Reparaturabteilung habe ich das <strong>gesamte Reparaturlager neu strukturiert</strong> und war maßgeblich daran beteiligt, sämtliche Materialien in das Kanban-System aufzunehmen. Die Neuordnung umfasste Lagerplatzvergabe, Bestandsaufnahme und die Erstellung aller zugehörigen Kanban-Karten.</div>
-              </div>
-              <div class="detail-block">
-                <div class="lbl">Phase 2 · Erweiterung &amp; Lageplanung</div>
-                <div class="txt">In der Logistikabteilung habe ich nicht nur weitere Kanban-Karten erstellt, sondern auch <strong>Lagerlösungen konzipiert</strong>, um möglichst viele Materialien in das bestehende Kanban-System zu integrieren — einschließlich Platzoptimierung und Regalzuweisungen.</div>
-              </div>
-              <div class="detail-block">
-                <div class="lbl">Phase 3 · Kanban Mastersheet</div>
-                <div class="txt">Die manuelle Kartenerstellung dauerte rund <strong>10 Minuten pro Materialgruppe</strong>. Das von mir entwickelte Mastersheet automatisiert den gesamten Prozess und reduziert ihn auf <strong>unter eine Minute pro Batch</strong> — eine Zeitersparnis von über 90%.</div>
-              </div>
-              <div class="detail-block">
-                <div class="lbl">Ergebnis</div>
-                <ul>
-                  <li>Reparaturlager komplett neu organisiert und in Kanban integriert</li>
-                  <li>Lagerlösungen für maximale Materialabdeckung im Kanban-System</li>
-                  <li><strong>90% Zeitersparnis</strong> bei der Kanban-Kartenerstellung</li>
-                  <li>Weniger Fehler durch automatisierte Datenübernahme</li>
-                </ul>
-              </div>
-            </div>
-            <aside class="detail-aside">
-              <div class="detail-block">
-                <div class="lbl">Meine Rolle</div>
-                <div class="txt">Von der operativen Umsetzung im Lager bis zur Entwicklung des automatisierten Mastersheets — über alle drei Phasen hinweg hauptverantwortlich.</div>
-              </div>
-              <div class="detail-block">
-                <div class="lbl">Wirkung</div>
-                <div class="txt"><strong>10 min → &lt;1 min</strong> pro Batch. Ein wiederkehrender Workflow neu gedacht.</div>
-              </div>
-            </aside>
+          <div class="project-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </div>
-        </div></div></div>
+        </a>
       </article>
 
-    </div>
 
-    <!-- In Planung -->
-    <div class="upcoming">
-      <div class="upcoming-num">07</div>
-      <div>
-        <div class="upcoming-title">Verkaufsdaten-Analyse &amp; Trenderkennung</div>
-        <div class="upcoming-desc">Ein Tool zur automatisierten Auswertung von 18 Monaten Verkaufsdaten — mit Statistiktabellen und Trenderkennung zur Unterstützung strategischer Entscheidungen.</div>
-      </div>
-      <div class="upcoming-badge">In Planung</div>
+      <!-- ── 07 ── -->
+      <article class="project">
+        <a class="project-row" href="projects/verkaufsdaten-analyse.html">
+          <div class="project-num">07</div>
+          <div class="project-body">
+            <h3 class="project-title" data-de="Verkaufsdaten-Analyse &amp; Trenderkennung" data-en="Sales Data Analysis &amp; Trend Detection">Verkaufsdaten-Analyse &amp; Trenderkennung</h3>
+            <p class="project-subtitle" data-de="Ein Python-Skript verarbeitet 18 Monate ERP-Verkaufsdaten und erzeugt einen vollständig interaktiven HTML-Bericht — mit A/B-Periodenvergleich, Saisonalitätserkennung und Filialranking über 43 Standorte." data-en="A Python script processes 18 months of ERP sales data and generates a fully interactive HTML report — with A/B period comparison, seasonality detection and branch ranking across 43 locations.">Ein Python-Skript verarbeitet 18 Monate ERP-Verkaufsdaten und erzeugt einen vollständig interaktiven HTML-Bericht — mit A/B-Periodenvergleich, Saisonalitätserkennung und Filialranking über 43 Standorte.</p>
+            <div class="tag-row">
+              <span class="tag impact" data-de="95.843 Paare analysiert" data-en="95,843 pairs analysed">95.843 Paare analysiert</span>
+              <span class="tag" data-de="Datenanalyse" data-en="Data Analysis">Datenanalyse</span>
+              <span class="tag divider">·</span>
+              <span class="tag" data-de="Trenderkennung" data-en="Trend Detection">Trenderkennung</span>
+              <span class="tag divider">·</span>
+              <span class="tag">Python · CSV</span>
+            </div>
+          </div>
+          <div class="project-meta">
+            <div><b data-de="Rolle" data-en="Role">Rolle</b><span data-de="Eigeninitiative" data-en="Self-Initiated">Eigeninitiative</span></div>
+            <div><b>Stack</b>Python · HTML</div>
+          </div>
+          <div class="project-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </div>
+        </a>
+      </article>
+
     </div>
   </section>
 
   <!-- ═══ Contact ═══ -->
-  <section class="contact" id="kontakt" data-screen-label="05 Kontakt">
-    <h2 class="contact-statement">
+  <section class="contact" id="kontakt">
+    <h2 class="contact-statement" data-de="Offen für<br><em>Gespräche.</em>" data-en="Open for<br><em>conversations.</em>">
       Offen für<br>
       <em>Gespräche.</em>
     </h2>
     <div class="contact-side">
-      <p class="contact-text">
+      <p class="contact-text" data-de="Koordinations-, Projektmanagement- und Prozessoptimierungsrollen — gerne in der Schnittmenge aus Operations, Daten und digitalen Tools." data-en="Coordination, project management and process optimisation roles — ideally at the intersection of operations, data and digital tools.">
         Koordinations-, Projektmanagement- und Prozessoptimierungsrollen — gerne in der Schnittmenge
         aus Operations, Daten und digitalen Tools.
       </p>
       <div class="contact-links">
-        <a class="contact-link" href="/cdn-cgi/l/email-protection#720b1d071c17010132170a131f021e175c111d1f">
+        <a class="contact-link" href="mailto:y.weinkoetz@gmail.com">
           <svg class="ico" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="1.5"/><path d="M2.5 7l9.5 7L21.5 7"/></svg>
           <div>
             <div class="label">E-Mail</div>
-            <span><span class="__cf_email__" data-cfemail="e49d8b918a819797a4819c8589948881ca878b89">[email&#160;protected]</span></span>
+            <span>y.weinkoetz@gmail.com</span>
           </div>
           <svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
-        <a class="contact-link" href="https://linkedin.com/in/" target="_blank">
+        <a class="contact-link" href="https://linkedin.com/in/youness-weinkoetz" target="_blank">
           <svg class="ico" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z"/></svg>
           <div>
             <div class="label">LinkedIn</div>
@@ -1269,8 +360,8 @@ body::before {
         <a class="contact-link" href="#">
           <svg class="ico" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
           <div>
-            <div class="label">Telefon</div>
-            <span>auf Anfrage</span>
+            <div class="label" data-de="Telefon" data-en="Phone">Telefon</div>
+            <span data-de="auf Anfrage" data-en="on request">auf Anfrage</span>
           </div>
           <svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
@@ -1290,352 +381,11 @@ body::before {
 
 </div>
 
-<!-- Tweaks -->
-<div id="tweaks-root"></div>
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/babel" src="tweaks-panel.jsx"></script>
-<script type="text/babel">
-const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-  "accent": [
-    "#1f7a3f",
-    "#155028",
-    "#e3eee4"
-  ],
-  "background": [
-    "#f4f1ea",
-    "#e8e2d4"
-  ],
-  "nameStyle": "block",
-  "grain": true,
-  "surnameColor": "accent"
-}/*EDITMODE-END*/;
-
-const PALETTES = {
-  "forest":     ["#1f7a3f", "#155028", "#e3eee4"],
-  "ink":        ["#1a1814", "#000000", "#e8e3d5"],
-  "burgundy":   ["#8a2f3b", "#5a1922", "#f0dfe1"],
-  "cobalt":     ["#2752c4", "#1a3a8c", "#dde6f7"],
-  "rust":       ["#b3552a", "#7d3717", "#f4dfd0"]
-};
-
-function applyTweaks(t) {
-  const r = document.documentElement;
-  r.style.setProperty('--accent', t.accent[0]);
-  r.style.setProperty('--accent-dark', t.accent[1]);
-  r.style.setProperty('--accent-soft', t.accent[2]);
-  r.style.setProperty('--paper', t.background[0]);
-  r.style.setProperty('--cream', t.background[1]);
-
-  // Name style
-  const sur = document.querySelector('.hero-name .surname');
-  if (sur) {
-    if (t.nameStyle === 'italic-last') {
-      sur.style.fontStyle = 'italic';
-    } else if (t.nameStyle === 'block') {
-      sur.style.fontStyle = 'normal';
-    } else if (t.nameStyle === 'all-italic') {
-      sur.style.fontStyle = 'italic';
-      document.querySelector('.hero-name').style.fontStyle = 'italic';
-    } else {
-      document.querySelector('.hero-name').style.fontStyle = 'normal';
-      sur.style.fontStyle = 'normal';
-    }
-    sur.style.color = t.surnameColor === 'accent' ? 'var(--accent)' : 'var(--ink)';
-  }
-
-  // Grain
-  document.body.style.setProperty('--grain', t.grain ? '0.35' : '0');
-  const style = document.getElementById('grain-toggle') || (() => {
-    const s = document.createElement('style');
-    s.id = 'grain-toggle';
-    document.head.appendChild(s);
-    return s;
-  })();
-  style.textContent = t.grain ? '' : 'body::before { display: none !important; }';
-}
-
-function App() {
-  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
-
-  React.useEffect(() => { applyTweaks(t); }, [t]);
-
-  return (
-    <TweaksPanel>
-      <TweakSection label="Palette" />
-      <TweakColor
-        label="Akzentfarbe"
-        value={t.accent}
-        options={[
-          PALETTES.forest,
-          PALETTES.ink,
-          PALETTES.burgundy,
-          PALETTES.cobalt,
-          PALETTES.rust
-        ]}
-        onChange={(v) => setTweak('accent', v)}
-      />
-      <TweakColor
-        label="Papier"
-        value={t.background}
-        options={[
-          ["#faf7ef", "#efebe1"],
-          ["#f4f1ea", "#e8e2d4"],
-          ["#ffffff", "#f3f3f0"],
-          ["#1a1814", "#252220"]
-        ]}
-        onChange={(v) => setTweak('background', v)}
-      />
-
-      <TweakSection label="Typografie" />
-      <TweakSelect
-        label="Name-Stil"
-        value={t.nameStyle}
-        options={[
-          { value: 'italic-last', label: 'Vorname Roman · Nachname Italic' },
-          { value: 'block', label: 'Beide Roman' },
-          { value: 'all-italic', label: 'Beide Italic' }
-        ]}
-        onChange={(v) => setTweak('nameStyle', v)}
-      />
-      <TweakRadio
-        label="Akzent auf Nachname"
-        value={t.surnameColor}
-        options={[
-          { value: 'accent', label: 'Farbig' },
-          { value: 'ink',    label: 'Tinte' }
-        ]}
-        onChange={(v) => setTweak('surnameColor', v)}
-      />
-
-      <TweakSection label="Atmosphäre" />
-      <TweakToggle
-        label="Papier-Körnung"
-        value={t.grain}
-        onChange={(v) => setTweak('grain', v)}
-      />
-    </TweaksPanel>
-  );
-}
-
-const root = ReactDOM.createRoot(document.getElementById('tweaks-root'));
-root.render(<App />);
-</script>
-
 <script>
-// ═══ Language Toggle ═══
-let currentLang = 'de';
+const LANG_KEY = 'portfolio-lang';
+let currentLang = localStorage.getItem(LANG_KEY) || 'de';
 
-function initTranslations() {
-  function t(el, en) {
-    if (!el) return;
-    el.setAttribute('data-de', el.innerHTML);
-    el.setAttribute('data-en', en);
-  }
-
-  // Hero meta
-  const metaDivs = document.querySelectorAll('.hero-meta dl > div');
-  if (metaDivs[0]) { t(metaDivs[0].querySelector('dt'), 'Current'); t(metaDivs[0].querySelector('dd'), 'Assistant to Head of Shoes &amp; Furniture &middot; <em>Office Manager</em>'); }
-  if (metaDivs[1]) { t(metaDivs[1].querySelector('dt'), 'Focus'); t(metaDivs[1].querySelector('dd'), 'Process Optimisation &middot; Databases &middot; UI/UX'); }
-  if (metaDivs[2]) { t(metaDivs[2].querySelector('dt'), 'Languages'); }
-  if (metaDivs[3]) { t(metaDivs[3].querySelector('dt'), 'Seeking'); t(metaDivs[3].querySelector('dd'), 'Project Mgmt &middot; Coordination &middot; Operations'); }
-
-  // Career arc
-  t(document.querySelector('.arc > .hero-kicker'), 'Career Path &middot; since 2023');
-  const steps = document.querySelectorAll('.arc-step');
-  [steps[0], steps[1], steps[2], steps[3]].forEach((s, i) => {
-    if (!s) return;
-    const years = ['2023 — 2024', 'from May 2025', 'from Oct 2025', 'Q4 / 2025 —'];
-    const roles = ['Production &amp; Repair Department', 'Kanban &amp; Material Management', 'Logistics Support', 'Assistant to Head of Shoes &amp; Furniture'];
-    const details = [
-      'Manufacturing, process understanding &amp; first initiative — warehouse restructuring',
-      'Building &amp; optimising the company-wide Kanban system',
-      'Cross-department coordination',
-      'Independent project ownership — furniture dept. added Q1/2026'
-    ];
-    t(s.querySelector('.arc-year'), years[i]);
-    t(s.querySelector('.arc-role'), roles[i]);
-    t(s.querySelector('.arc-detail'), details[i]);
-  });
-
-  // KPIs
-  const kpis = document.querySelectorAll('.kpi .kpi-label');
-  const kpiEN = [
-    'Stores equipped with new <strong>configurator</strong>',
-    'Time saved on <strong>Kanban card creation</strong>',
-    'Completed <strong>projects</strong> in 12 months',
-    'System-wide <strong>data quality issue</strong> identified'
-  ];
-  kpis.forEach((k, i) => { if (kpiEN[i]) t(k, kpiEN[i]); });
-
-  // Section header
-  t(document.querySelector('.section-eyebrow'), 'Selected Work 2023 — 2026');
-  t(document.querySelector('.section-title'), 'From Problem<br>to <em>Solution.</em>');
-  t(document.querySelector('.section-count'), '— 06 PROJECTS / 01 PLANNED —');
-
-  // Projects
-  const P = {
-    'Projekt 01 Sonderanfertigung': {
-      title: 'Custom Shoe Order Form',
-      subtitle: 'A web-based shoe configurator with live database integration, replacing the manual custom order process across 40+ stores.',
-      tags: ['40+ Stores', 'Process Optimisation', 'Database Integration', 'UI/UX Design'],
-      meta: ['<b>Role</b>End-to-End', '<b>Stack</b>DB &middot; Web'],
-      labels: ['Background', 'Approach', 'Result'],
-      texts: [
-        'Custom shoe orders were originally processed via a <strong>handwritten PDF form</strong> — exclusively by the department head or head office. A Google Sheet was introduced as an interim solution with automated compatibility rules and pricing, but could not be rolled out to 40+ stores due to licensing and access constraints.',
-        'Analysis of the existing form logic (compatibility rules, pricing, dependent dropdowns). Design of a relational data model. Iterative prototype development with feedback. Integration with the warehouse database for live data on models, materials and stock levels. Deployment into the existing internal platform.',
-        null
-      ],
-      list: [
-        'Store staff can <strong>independently submit custom orders</strong>',
-        'Complex compatibility rules prevent invalid configurations',
-        'Live material availability from the warehouse system',
-        'Automatic pricing and order overview',
-        'Phased rollout with training documentation'
-      ],
-      asideLabels: ['My Role', 'Impact'],
-      asideTexts: [
-        'Full ownership: requirements analysis, data modelling, UI design, database integration, deployment planning, documentation and rollout coordination.',
-        '<strong>40+ stores</strong> gain autonomous access to the custom order workflow for the first time.'
-      ]
-    },
-    'Projekt 02 Produktionsplaner': {
-      title: 'Production Planner',
-      subtitle: 'A database-driven planning tool that cross-references current stock with BOM data to assess production feasibility and identify bottleneck materials.',
-      tags: ['Decision Support', 'Production Planning', 'Database Integration', 'Bottleneck Analysis'],
-      meta: ['<b>Role</b>End-to-End', '<b>Stack</b>DB &middot; BOM'],
-      labels: ['Background', 'Solution'],
-      texts: [
-        'Production planning required manual checks of material availability across multiple systems. Bottlenecks often only became visible during production.',
-        'A tool connected directly to the warehouse database. Users enter planned shoe models, the system cross-references <strong>bills of materials (BOM)</strong> with current stock levels and immediately shows which materials are the bottleneck.'
-      ],
-      asideLabels: ['My Role'],
-      asideTexts: ['Concept, database integration, development and rollout — fully self-directed.']
-    },
-    'Projekt 03 St\u00FCcklisten-Analyse': {
-      title: 'BOM Analysis — <em style="font-style:italic;color:var(--accent)">Configurable Furniture</em>',
-      subtitle: 'Systematic analysis of bills of materials for configurable furniture via database queries, uncovering a recurring data quality issue.',
-      tags: ['Issue Identified', 'Data Analysis', 'Quality Assurance', 'Cross-Department'],
-      meta: ['<b>Role</b>Self-Initiated', '<b>Stack</b>SQL &middot; Reporting'],
-      labels: ['Background', 'Approach', 'Result'],
-      texts: [
-        'Configurable furniture has complex BOMs in the warehouse system. Errors in this data cause production and ordering issues, but are rarely checked systematically.',
-        'Using read-only database access, I systematically analysed the BOMs and identified a <strong>recurring pattern of faulty entries</strong> that was not visible in day-to-day operations.',
-        'The analysis and documentation were handed to the responsible department for targeted resolution. The approach demonstrates how database access can be used <strong>proactively for quality assurance</strong>.'
-      ],
-      asideLabels: ['My Role'],
-      asideTexts: ['Self-initiated: designed the analysis, queried the database, identified the pattern, prepared findings and routed them to the right team.']
-    },
-    'Projekt 04 Reparaturservice': {
-      title: 'Repair Service — Web Pages',
-      subtitle: 'Two customer-facing web pages: an interactive overview of available repairs by shoe model, and a gallery of repaired shoes with the send-in process explained.',
-      tags: ['Customer-Facing', 'Customer Service', 'Web Design', 'Content'],
-      meta: ['<b>Role</b>End-to-End', '<b>Format</b>2 Web Pages'],
-      labels: ['Background', 'Solution'],
-      texts: [
-        'Customers had no easy way to find out which repairs were available for their shoe model. The large number of models required a clear, navigable presentation.',
-        'An interactive information page that guides customers through the model range and shows available repair options. Complemented by a gallery with <strong>before/after examples</strong> and a clear explanation of the send-in process.'
-      ],
-      asideLabels: ['My Role'],
-      asideTexts: ['Concept, information architecture, design and implementation of both pages.']
-    },
-    'Projekt 05 Kundeninformation': {
-      title: 'Custom Shoes — Customer Information',
-      subtitle: 'A public web page showcasing the custom shoe service with visual examples, helping customers understand the available options.',
-      tags: ['Customer Comms', 'Marketing', 'Web Design'],
-      meta: ['<b>Role</b>End-to-End', '<b>Format</b>Public Site'],
-      labels: ['Background', 'Solution'],
-      texts: [
-        'The custom shoe service was not transparently presented to customers. The possibilities (leather colours, soles, individual adjustments) were only known internally.',
-        'A visually appealing web page with concrete examples of custom shoes, showing the <strong>full range of customisation options</strong> and making the service tangible for customers.'
-      ],
-      asideLabels: ['My Role'],
-      asideTexts: ['Concept, content selection, design and implementation.']
-    },
-    'Projekt 06 Kanban-System': {
-      title: 'Kanban System — Build &amp; Optimisation',
-      subtitle: 'From restructuring an entire repair warehouse to building Kanban cards to an automated mastersheet that sped up card creation by 90%.',
-      tags: ['90% Time Saved', 'Lean / Kanban', 'Warehouse Mgmt', 'Process Optimisation'],
-      meta: ['<b>Role</b>Lead', '<b>Scope</b>3 Phases'],
-      labels: ['Phase 1 &middot; Repair Warehouse', 'Phase 2 &middot; Expansion &amp; Storage Planning', 'Phase 3 &middot; Kanban Mastersheet', 'Result'],
-      texts: [
-        'As a production worker in the repair department, I <strong>completely restructured the repair warehouse</strong> and was the leading contributor in adding all materials to the Kanban system. This included storage assignments, inventory checks and creating all associated Kanban cards.',
-        'In the logistics department, I not only created more Kanban cards but also <strong>designed storage solutions</strong> to integrate as many materials as possible into the existing system — including space optimisation and shelf assignments.',
-        'Manual card creation took about <strong>10 minutes per material group</strong>. The mastersheet I developed automates the entire process, reducing it to <strong>under one minute per batch</strong> — a time saving of over 90%.',
-        null
-      ],
-      list: [
-        'Repair warehouse completely reorganised and integrated into Kanban',
-        'Storage solutions for maximum material coverage in the Kanban system',
-        '<strong>90% time saved</strong> on Kanban card creation',
-        'Fewer errors through automated data transfer'
-      ],
-      asideLabels: ['My Role', 'Impact'],
-      asideTexts: [
-        'From hands-on warehouse work to developing the automated mastersheet — lead responsible across all three phases.',
-        '<strong>10 min → &lt;1 min</strong> per batch. A recurring workflow reimagined.'
-      ]
-    }
-  };
-
-  document.querySelectorAll('article.project').forEach(proj => {
-    const label = proj.getAttribute('data-screen-label');
-    const d = P[label];
-    if (!d) return;
-
-    t(proj.querySelector('.project-title'), d.title);
-    t(proj.querySelector('.project-subtitle'), d.subtitle);
-
-    // Tags
-    const tags = proj.querySelectorAll('.tag-row .tag:not(.divider)');
-    d.tags.forEach((tg, i) => { if (tags[i]) t(tags[i], tg); });
-
-    // Meta
-    const metas = proj.querySelectorAll('.project-meta > div');
-    d.meta.forEach((m, i) => { if (metas[i]) t(metas[i], m); });
-
-    // Detail blocks in main body
-    const blocks = proj.querySelectorAll('.detail-body > div > .detail-block');
-    d.labels.forEach((lb, i) => {
-      if (blocks[i]) {
-        t(blocks[i].querySelector('.lbl'), lb);
-        if (d.texts[i]) t(blocks[i].querySelector('.txt'), d.texts[i]);
-      }
-    });
-
-    // List items
-    if (d.list) {
-      const items = proj.querySelectorAll('.detail-body ul li');
-      d.list.forEach((li, i) => { if (items[i]) t(items[i], li); });
-    }
-
-    // Aside blocks
-    const asides = proj.querySelectorAll('.detail-aside .detail-block');
-    d.asideLabels.forEach((lb, i) => {
-      if (asides[i]) {
-        t(asides[i].querySelector('.lbl'), lb);
-        if (d.asideTexts[i]) t(asides[i].querySelector('.txt'), d.asideTexts[i]);
-      }
-    });
-  });
-
-  // Upcoming
-  t(document.querySelector('.upcoming-title'), 'Sales Data Analysis &amp; Trend Detection');
-  t(document.querySelector('.upcoming-desc'), 'A tool for automated analysis of 18 months of sales data — with statistics tables and trend detection to support strategic decisions.');
-  t(document.querySelector('.upcoming-badge'), 'Planned');
-
-  // Contact
-  t(document.querySelector('.contact-statement'), 'Open for<br><em>conversations.</em>');
-  t(document.querySelector('.contact-text'), 'Coordination, project management and process optimisation roles — ideally at the intersection of operations, data and digital tools.');
-  const cLinks = document.querySelectorAll('.contact-link');
-  if (cLinks[2]) {
-    t(cLinks[2].querySelector('.label'), 'Phone');
-    const sp = cLinks[2].querySelector('div span:not(.label)');
-    if (sp) t(sp, 'on request');
-  }
-}
-
-function toggleLang() {
-  currentLang = currentLang === 'de' ? 'en' : 'de';
+function applyLang() {
   document.querySelectorAll('.lang-opt').forEach(opt => {
     opt.classList.toggle('active', opt.getAttribute('data-lang') === currentLang);
   });
@@ -1644,37 +394,21 @@ function toggleLang() {
   });
 }
 
-document.querySelector('.lang-opt[data-lang="de"]').classList.add('active');
-initTranslations();
-</script>
-<script>
-function toggleCard(card) {
-  const isOpen = card.classList.contains('open');
-  document.querySelectorAll('.project.open').forEach(c => { if (c !== card) c.classList.remove('open'); });
-  card.classList.toggle('open', !isOpen);
+function toggleLang() {
+  currentLang = currentLang === 'de' ? 'en' : 'de';
+  localStorage.setItem(LANG_KEY, currentLang);
+  applyLang();
 }
 
-// Reveal on scroll — apply to projects + sections
+applyLang();
+
 (function setupReveal() {
   const items = document.querySelectorAll('.project, .kpi, .arc-step, .hero, .upcoming');
-  items.forEach((el, i) => {
-    el.classList.add('reveal');
-    el.style.transitionDelay = (i * 30) + 'ms';
-  });
-
-  // Mark anything already in the initial viewport as visible synchronously,
-  // so the user never sees a blank page on first paint.
+  items.forEach((el, i) => { el.classList.add('reveal'); el.style.transitionDelay = (i * 30) + 'ms'; });
   const vh = window.innerHeight || document.documentElement.clientHeight;
-  items.forEach(el => {
-    const r = el.getBoundingClientRect();
-    if (r.top < vh - 40) el.classList.add('visible');
-  });
-
-  // Observer only handles the below-the-fold ones.
+  items.forEach(el => { if (el.getBoundingClientRect().top < vh - 40) el.classList.add('visible'); });
   const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
-    });
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
   }, { threshold: 0.08 });
   items.forEach(el => { if (!el.classList.contains('visible')) io.observe(el); });
 })();

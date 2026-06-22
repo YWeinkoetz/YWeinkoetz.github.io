@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stücklisten-Analyse — Youness Weinkötz</title>
+<meta name="description" content="Systematische Analyse der Stücklisten für konfigurierbare Möbel mittels Datenbankauswertung, die ein wiederkehrendes Datenqualitätsproblem aufgedeckt hat.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:title" content="Stücklisten-Analyse — Youness Weinkötz">
+<meta property="og:description" content="Systematische Analyse der Stücklisten für konfigurierbare Möbel mittels Datenbankauswertung, die ein wiederkehrendes Datenqualitätsproblem aufgedeckt hat.">
+<meta property="og:image" content="../images/03-stuecklisten-korrekturen.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<div class="shell">
+
+  <header class="masthead">
+    <div class="masthead-inner">
+      <div class="left">
+        <a class="back-link" href="../Portfolio.html">
+          <svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+          <span data-de="Übersicht" data-en="Overview">Übersicht</span>
+        </a>
+      </div>
+      <div class="center">
+        <div class="proj-nav">
+          <a class="proj-nav-arrow" href="produktionsplaner.html" title="Vorheriges Projekt">
+            <svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+          </a>
+          <span class="proj-nav-count">03 / 07</span>
+          <a class="proj-nav-arrow" href="reparaturservice.html" title="Nächstes Projekt">
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="right">
+        <button class="lang-toggle" onclick="toggleLang()" aria-label="Switch language">
+          <span class="lang-opt" data-lang="de">DE</span>
+          <span class="lang-sep">/</span>
+          <span class="lang-opt" data-lang="en">EN</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="proj-hero">
+    <span class="proj-num" aria-hidden="true">03</span>
+    <h1 class="proj-title" data-de="Stücklisten-Analyse — Konfigurierbare Möbel" data-en="BOM Analysis — Configurable Furniture">Stücklisten-Analyse — <em style="font-style:italic;color:var(--accent)">Konfigurierbare Möbel</em></h1>
+    <p class="proj-subtitle" data-de="Systematische Analyse der Stücklisten für konfigurierbare Möbel mittels Datenbankauswertung, die ein wiederkehrendes Datenqualitätsproblem aufgedeckt hat." data-en="Systematic analysis of bills of materials for configurable furniture via database queries, uncovering a recurring data quality issue.">
+      Systematische Analyse der Stücklisten für konfigurierbare Möbel mittels Datenbankauswertung, die ein wiederkehrendes Datenqualitätsproblem aufgedeckt hat.
+    </p>
+    <div class="proj-hero-meta">
+      <span><b data-de="Rolle" data-en="Role">Rolle</b><span data-de="Eigeninitiative" data-en="Self-Initiated">Eigeninitiative</span></span>
+      <span><b>Stack</b>SQL · Reporting</span>
+      <span><b data-de="Wirkung" data-en="Impact">Wirkung</b><em data-de="Systemproblem identifiziert" data-en="System issue identified">Systemproblem identifiziert</em></span>
+    </div>
+  </div>
+
+  <div class="proj-content">
+    <div>
+      <div class="detail-block">
+        <div class="lbl" data-de="Ausgangslage" data-en="Background">Ausgangslage</div>
+        <div class="txt" data-de="Konfigurierbare Möbel haben komplexe Stücklisten im Warenwirtschaftssystem. Fehler in diesen Daten führen zu Problemen in Produktion und Bestellung, werden aber selten systematisch geprüft." data-en="Configurable furniture has complex BOMs in the warehouse system. Errors in this data cause production and ordering issues, but are rarely checked systematically.">
+          Konfigurierbare Möbel haben komplexe Stücklisten im Warenwirtschaftssystem. Fehler in diesen Daten führen zu Problemen in Produktion und Bestellung, werden aber selten systematisch geprüft.
+        </div>
+      </div>
+      <div class="detail-block">
+        <div class="lbl" data-de="Vorgehen" data-en="Approach">Vorgehen</div>
+        <div class="txt" data-de='Über einen Lesezugang zur Datenbank habe ich die Stücklisten der konfigurierbaren Möbel systematisch ausgewertet und dabei ein <strong>wiederkehrendes Muster fehlerhafter Einträge</strong> identifiziert, das in der normalen Arbeit nicht sichtbar war.' data-en='Using read-only database access, I systematically analysed the BOMs and identified a <strong>recurring pattern of faulty entries</strong> that was not visible in day-to-day operations.'>
+          Über einen Lesezugang zur Datenbank habe ich die Stücklisten der konfigurierbaren Möbel systematisch ausgewertet und dabei ein <strong>wiederkehrendes Muster fehlerhafter Einträge</strong> identifiziert, das in der normalen Arbeit nicht sichtbar war.
+        </div>
+      </div>
+      <div class="detail-block">
+        <div class="lbl" data-de="Ergebnis" data-en="Result">Ergebnis</div>
+        <div class="txt" data-de='Die Analyse samt Dokumentation wurde an die zuständige Fachabteilung übergeben, die das Problem nun gezielt beheben kann. Der Ansatz zeigt, wie Datenbankzugang <strong>proaktiv zur Qualitätssicherung</strong> eingesetzt werden kann.' data-en='The analysis and documentation were handed to the responsible department for targeted resolution. The approach demonstrates how database access can be used <strong>proactively for quality assurance</strong>.'>
+          Die Analyse samt Dokumentation wurde an die zuständige Fachabteilung übergeben, die das Problem nun gezielt beheben kann. Der Ansatz zeigt, wie Datenbankzugang <strong>proaktiv zur Qualitätssicherung</strong> eingesetzt werden kann.
+        </div>
+      </div>
+    </div>
+
+    <aside class="proj-aside">
+      <div class="detail-block">
+        <div class="lbl" data-de="Meine Rolle" data-en="My Role">Meine Rolle</div>
+        <div class="txt" data-de="Eigeninitiative: Analyse konzipiert, Datenbank abgefragt, Muster erkannt, Ergebnisse aufbereitet und an die richtige Stelle weitergeleitet." data-en="Self-initiated: designed the analysis, queried the database, identified the pattern, prepared findings and routed them to the right team.">
+          Eigeninitiative: Analyse konzipiert, Datenbank abgefragt, Muster erkannt, Ergebnisse aufbereitet und an die richtige Stelle weitergeleitet.
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <div class="stat-callout">
+    <div class="stat-block">
+      <div class="stat-num">65</div>
+      <div class="stat-lbl" data-de="Fehler in Stücklisten identifiziert" data-en="Errors identified in BOMs">Fehler in Stücklisten identifiziert</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-num">63</div>
+      <div class="stat-lbl" data-de="Automatisch behoben" data-en="Automatically fixed">Automatisch behoben</div>
+    </div>
+  </div>
+
+  <div class="proj-gallery">
+    <div class="gallery-head" data-de="Screenshots &amp; Einblicke" data-en="Screenshots &amp; Insights">Screenshots &amp; Einblicke</div>
+    <div class="gallery-grid">
+      <div>
+        <div class="gallery-item">
+          <img src="../images/03-stuecklisten-korrekturen.png" alt="OR-Fehler — identifizierte Einträge und automatische Korrekturen">
+        </div>
+        <div class="gallery-caption" data-de="65 fehlerhafte Einträge — 63 automatisch korrigiert, 2 manuell zu prüfen" data-en="65 faulty entries — 63 auto-corrected, 2 require manual review">65 fehlerhafte Einträge — 63 automatisch korrigiert, 2 manuell zu prüfen</div>
+      </div>
+      <div>
+        <div class="gallery-item">
+          <img src="../images/03-stuecklisten-visual.png" alt="Visuelle Analyse der OR-Einschränkungen">
+        </div>
+        <div class="gallery-caption" data-de="Visuelle Analyse — wie OR-Einschränkungen im System stehen vs. wie sie ausgewertet werden" data-en="Visual analysis — how OR constraints are stored vs. how they are evaluated">Visuelle Analyse — wie OR-Einschränkungen im System stehen vs. wie sie ausgewertet werden</div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="proj-pagination">
+    <a class="proj-pagination-link" href="produktionsplaner.html">
+      <div class="proj-pagination-dir">
+        <svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+        <span data-de="Vorheriges Projekt" data-en="Previous project">Vorheriges Projekt</span>
+      </div>
+      <div class="proj-pagination-num">02</div>
+      <div class="proj-pagination-title" data-de="Produktionsplaner" data-en="Production Planner">Produktionsplaner</div>
+    </a>
+    <a class="proj-pagination-link next" href="reparaturservice.html">
+      <div class="proj-pagination-dir">
+        <span data-de="Nächstes Projekt" data-en="Next project">Nächstes Projekt</span>
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </div>
+      <div class="proj-pagination-num">04</div>
+      <div class="proj-pagination-title" data-de="Reparaturservice — Webseiten" data-en="Repair Service — Web Pages">Reparaturservice — Webseiten</div>
+    </a>
+  </nav>
+
+  <div class="bigword" aria-hidden="true">03<em>.</em></div>
+
+  <footer class="footer">
+    <span class="mono-name">© 2026 Youness Weinkötz</span>
+    <a href="../Portfolio.html" style="color:inherit;text-decoration:none;" data-de="← Alle Projekte" data-en="← All Projects">← Alle Projekte</a>
+    <span><a href="#" style="color:inherit;text-decoration:none;">↑ Nach oben</a></span>
+  </footer>
+
+</div>
+
+<script src="../gallery.js"></script>
+<script>
+const LANG_KEY = 'portfolio-lang';
+let currentLang = localStorage.getItem(LANG_KEY) || 'de';
+function applyLang() {
+  document.querySelectorAll('.lang-opt').forEach(opt => opt.classList.toggle('active', opt.getAttribute('data-lang') === currentLang));
+  document.querySelectorAll('[data-de]').forEach(el => { el.innerHTML = currentLang === 'de' ? el.getAttribute('data-de') : el.getAttribute('data-en'); });
+}
+function toggleLang() {
+  currentLang = currentLang === 'de' ? 'en' : 'de';
+  localStorage.setItem(LANG_KEY, currentLang);
+  applyLang();
+}
+applyLang();
+</script>
+</body>
+</html>
