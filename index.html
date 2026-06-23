@@ -157,7 +157,7 @@
     <div class="section-head">
       <div>
         <div class="section-eyebrow" data-de="Was ich mitbringe" data-en="What I bring">Was ich mitbringe</div>
-        <h2 class="section-title" data-de="Kompetenzen<br>&amp; <em>Werkzeuge.</em>" data-en="Skills<br>&amp; <em>tools.</em>">Kompetenzen<br>&amp; <em>Werkzeuge.</em></h2>
+        <h2 class="section-title" data-de="Kompetenzen &amp; <em>Werkzeuge.</em>" data-en="Skills &amp; <em>tools.</em>">Kompetenzen &amp; <em>Werkzeuge.</em></h2>
       </div>
       <div class="section-count" data-de="— ARBEITSWEISE —" data-en="— HOW I WORK —">— ARBEITSWEISE —</div>
     </div>
@@ -498,7 +498,7 @@ function toggleLang() {
 applyLang();
 
 (function setupReveal() {
-  const items = document.querySelectorAll('.project, .kpi, .arc-step, .hero, .upcoming, .skill');
+  const items = document.querySelectorAll('.project, .kpi, .arc-step, .hero, .upcoming');
   items.forEach((el, i) => { el.classList.add('reveal'); el.style.transitionDelay = (i * 30) + 'ms'; });
   const vh = window.innerHeight || document.documentElement.clientHeight;
   items.forEach(el => { if (el.getBoundingClientRect().top < vh - 40) el.classList.add('visible'); });
