@@ -194,6 +194,7 @@
 const LANG_KEY = 'portfolio-lang';
 let currentLang = localStorage.getItem(LANG_KEY) || 'de';
 function applyLang() {
+  document.documentElement.lang = currentLang;
   document.querySelectorAll('.lang-opt').forEach(opt => opt.classList.toggle('active', opt.getAttribute('data-lang') === currentLang));
   document.querySelectorAll('[data-de]').forEach(el => { el.innerHTML = currentLang === 'de' ? el.getAttribute('data-de') : el.getAttribute('data-en'); });
 }

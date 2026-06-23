@@ -1127,3 +1127,29 @@ body::before {
   /* Reveal animation — ensure all content is visible */
   .reveal { opacity: 1 !important; transform: none !important; }
 }
+
+/* ════════════════════════════════════════════ */
+/*  ACCESSIBILITY                               */
+/* ════════════════════════════════════════════ */
+
+/* Visible keyboard focus (mouse clicks stay clean via :focus-visible) */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Non-interactive contact row (e.g. phone available on request) */
+.contact-link--static { cursor: default; }
+.contact-link--static:hover { color: inherit; padding-left: 0; }
+
+/* Respect the user's reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal { opacity: 1 !important; transform: none !important; }
+}

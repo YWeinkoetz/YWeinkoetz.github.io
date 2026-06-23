@@ -6,11 +6,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="google-site-verification" content="cjpVo-D2zPcFPtq7FljsikajMYJ58ok6vAQqGz_z9TQ">
 <title>Youness Weinkötz — Projektportfolio</title>
-<meta name="description" content="Vom Produktionsmitarbeiter zum Projektverantwortlichen in einem Jahr — 7 abgeschlossene Projekte in Prozessoptimierung, Datenbankentwicklung und UI/UX.">
+<meta name="description" content="Vom Produktionsmitarbeiter zum Projektverantwortlichen in einem Jahr — 8 abgeschlossene Projekte in Prozessoptimierung, Datenbankentwicklung und UI/UX.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="de_DE">
 <meta property="og:title" content="Youness Weinkötz — Projektportfolio">
-<meta property="og:description" content="Vom Produktionsmitarbeiter zum Projektverantwortlichen in einem Jahr — 7 abgeschlossene Projekte in Prozessoptimierung, Datenbankentwicklung und UI/UX.">
+<meta property="og:description" content="Vom Produktionsmitarbeiter zum Projektverantwortlichen in einem Jahr — 8 abgeschlossene Projekte in Prozessoptimierung, Datenbankentwicklung und UI/UX.">
 <meta property="og:image" content="images/07-analyse-overview.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -402,14 +402,13 @@
           </div>
           <svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
-        <a class="contact-link" href="#">
+        <div class="contact-link contact-link--static">
           <svg class="ico" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
           <div>
             <div class="label" data-de="Telefon" data-en="Phone">Telefon</div>
             <span data-de="auf Anfrage" data-en="on request">auf Anfrage</span>
           </div>
-          <svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
+        </div>
       </div>
     </div>
   </section>
@@ -431,6 +430,7 @@ const LANG_KEY = 'portfolio-lang';
 let currentLang = localStorage.getItem(LANG_KEY) || 'de';
 
 function applyLang() {
+  document.documentElement.lang = currentLang;
   document.querySelectorAll('.lang-opt').forEach(opt => {
     opt.classList.toggle('active', opt.getAttribute('data-lang') === currentLang);
   });
